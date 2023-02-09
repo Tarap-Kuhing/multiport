@@ -21,9 +21,9 @@ echo ''
 echo "                                                              "
 echo -e "$Lyellow                  ⚡ PREMIUM AUTOSCRIPT ⚡"$NC
 echo -e "$green.........................................................."$NC
-echo -e "$Lyellow                  Autoscript By Dyanvx199"$NC
+echo -e "$Lyellow                  Autoscript By Tarap-Kuhing"$NC
 echo -e "$Lyellow                    CONTACT TELEGRAM"$NC
-echo -e "$Lyellow                       @Dyanvx199"$NC
+echo -e "$Lyellow                       @Tarap-Kuhing"$NC
 echo -e "$green.........................................................."$NC
 echo ''
 echo -e "$Lyellow                       Tunggu 5 Saat!"$NC
@@ -48,7 +48,7 @@ clear
 # Valid Script
 VALIDITY() {
     today=$(date -d "0 days" +"%Y-%m-%d")
-    Exp1=$(curl https://raw.githubusercontent.com/${GitUser}/Profile/main/Tarap-Kuhing | grep $MYIP | awk '{print $4}')
+    Exp1=$(curl https://raw.githubusercontent.com/Tarap-Kuhing/Profile/main/Tarap-Kuhing | grep $MYIP | awk '{print $4}')
     if [[ $today < $Exp1 ]]; then
         echo -e "\e[32mTahniah! Anda Dibenarkan Menggunakan Autoscript Ini..\e[0m"
         sleep 5
@@ -61,7 +61,7 @@ VALIDITY() {
 # Valid Script
 VALIDITY() {
     today=$(date -d "0 days" +"%Y-%m-%d")
-    Exp1=$(curl https://raw.githubusercontent.com/${GitUser}/Profile/main/Tarap-Kuhing | grep $MYIP | awk '{print $4}')
+    Exp1=$(curl https://raw.githubusercontent.com/Tarap-Kuhing/Profile/main/Tarap-Kuhing | grep $MYIP | awk '{print $4}')
     if [[ $today < $Exp1 ]]; then
         echo -e "\e[32mTahniah! Anda Dibenarkan Menggunakan Autoscript Ini..\e[0m"
         sleep 5
@@ -71,7 +71,7 @@ VALIDITY() {
         exit 0
     fi
 }
-IZIN=$(curl https://raw.githubusercontent.com/${GitUser}/Profile/main/Tarap-Kuhing | awk '{print $5}' | grep $MYIP)
+IZIN=$(curl https://raw.githubusercontent.com/Tarap-Kuhing/Profile/main/Tarap-Kuhing | awk '{print $5}' | grep $MYIP)
 if [ $MYIP = $IZIN ]; then
     echo -e "\e[32mPermission Accepted...\e[0m"
     VALIDITY
@@ -85,7 +85,7 @@ clear
 echo -e "\e[32mloading...\e[0m"
 clear
 mkdir /var/lib;
-default_email=$( curl https://raw.githubusercontent.com/${GitUser}/email/main/default.conf )
+default_email=$( curl https://raw.githubusercontent.com/Tarap-Kuhing/Profile/main/email )
 clear
 #Nama penyedia script
 echo -e "\e[1;32m════════════════════════════════════════════════════════════\e[0m"
