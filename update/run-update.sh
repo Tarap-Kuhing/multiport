@@ -73,7 +73,7 @@ fi
 clear
 echo ""
 version=$(cat /home/ver)
-ver=$( curl https://raw.githubusercontent.com/${GitUser}/multiport/main/version )
+ver=$( curl https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/version )
 clear
 # LINE COLOUR
 line=$(cat /etc/line)
@@ -91,7 +91,7 @@ Info1="${Green_font_prefix}($version)${Font_color_suffix}"
 Info2="${Green_font_prefix}(LATEST VERSION)${Font_color_suffix}"
 Error="Version ${Green_font_prefix}[$ver]${Font_color_suffix} available${Red_font_prefix}[Please Update]${Font_color_suffix}"
 version=$(cat /home/ver)
-new_version=$( curl https://raw.githubusercontent.com/${GitUser}/multiport/main/version | grep $version )
+new_version=$( curl https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/version | grep $version )
 #Status Version
 if [ $version = $new_version ]; then
 sts="${Info2}"
@@ -147,7 +147,7 @@ sleep 1
 echo ""
 # UPDATE RUN-UPDATE
 cd /usr/bin
-wget -O run-update "https://raw.githubusercontent.com/${GitUser}/multiport/main/update/run-update.sh"
+wget -O run-update "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/update/run-update.sh"
 chmod +x run-update
 # RUN UPDATE
 echo ""
@@ -159,24 +159,24 @@ echo ""
 echo -e "\e[0;32mNew Version Downloading started!\e[0m"
 sleep 2
 cd /usr/bin
-wget -O update "https://raw.githubusercontent.com/${GitUser}/multiport/main/update/update.sh"
-wget -O run-update "https://raw.githubusercontent.com/${GitUser}/multiport/main/update/run-update.sh"
-wget -O message-ssh "https://raw.githubusercontent.com/${GitUser}/multiport/main/update/message-ssh.sh"
-wget -O change-port "https://raw.githubusercontent.com/${GitUser}/multiport/main/change.sh"
-wget -O system "https://raw.githubusercontent.com/${GitUser}/multiport/main/menu/system.sh"
-wget -O menu "https://raw.githubusercontent.com/${GitUser}/multiport/main/menu.sh"
-wget -O add-host "https://raw.githubusercontent.com/${GitUser}/multiport/main/system/add-host.sh"
-wget -O check-sc "https://raw.githubusercontent.com/${GitUser}/multiport/main/system/running.sh"
-wget -O cert "https://raw.githubusercontent.com/${GitUser}/multiport/main/cert.sh"
-wget -O trojaan "https://raw.githubusercontent.com/${GitUser}/multiport/main/menu/trojaan.sh"
-wget -O xraay "https://raw.githubusercontent.com/${GitUser}/multiport/main/menu/xraay.sh"
-wget -O xp "https://raw.githubusercontent.com/${GitUser}/multiport/main/xp.sh"
-wget -O port-xray "https://raw.githubusercontent.com/${GitUser}/multiport/main/change-port/port-xray.sh"
-wget -O themes "https://raw.githubusercontent.com/${GitUser}/multiport/main/menu/themes.sh"
-wget -O autobackup "https://raw.githubusercontent.com/${GitUser}/multiport/main/system/autobackup.sh"
-wget -O backup "https://raw.githubusercontent.com/${GitUser}/multiport/main/system/backup.sh"
-wget -O bckp "https://raw.githubusercontent.com/${GitUser}/multiport/main/system/bckp.sh"
-wget -O restore "https://raw.githubusercontent.com/${GitUser}/multiport/main/system/restore.sh"
+wget -O update "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/update/update.sh"
+wget -O run-update "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/update/run-update.sh"
+wget -O message-ssh "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/update/message-ssh.sh"
+wget -O change-port "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/change.sh"
+wget -O system "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/menu/system.sh"
+wget -O menu "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/menu.sh"
+wget -O add-host "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/system/add-host.sh"
+wget -O check-sc "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/system/running.sh"
+wget -O cert "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/cert.sh"
+wget -O trojaan "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/menu/trojaan.sh"
+wget -O xraay "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/menu/xraay.sh"
+wget -O xp "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/xp.sh"
+wget -O port-xray "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/change-port/port-xray.sh"
+wget -O themes "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/menu/themes.sh"
+wget -O autobackup "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/system/autobackup.sh"
+wget -O backup "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/system/backup.sh"
+wget -O bckp "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/system/bckp.sh"
+wget -O restore "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/system/restore.sh"
 chmod +x update
 chmod +x run-update
 chmod +x message-ssh
