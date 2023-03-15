@@ -136,17 +136,17 @@ export patchtls=/vmess
 export patchnontls=/vmess
 export uuid=$(cat /proc/sys/kernel/random/uuid)
 
-read -p "   Bug Address    : " address
-read -p "   Bug SNI/Host   : " sni
-read -p "   Expired (days) : " masaaktif
+#read -p "   Bug Address    : " address
+#read -p "   Bug SNI/Host   : " sni
+#read -p "   Expired (days) : " masaaktif
 
-bug_addr=${address}.
-bug_addr2=$address
-if [[ $address == "" ]]; then
-sts=$bug_addr2
-else
-sts=$bug_addr
-fi
+#bug_addr=${address}.
+#bug_addr2=$address
+#if [[ $address == "" ]]; then
+#sts=$bug_addr2
+#else
+#sts=$bug_addr
+#fi
 
 export exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
 export harini=`date -d "0 days" +"%Y-%m-%d"`
@@ -160,7 +160,7 @@ cat>/usr/local/etc/xray/$user-tls.json<<EOF
       {
       "v": "2",
       "ps": "${user}",
-      "add": "${sts}${domain}",
+      "add": "${domain}",
       "port": "${tls}",
       "id": "${uuid}",
       "aid": "0",
@@ -169,14 +169,13 @@ cat>/usr/local/etc/xray/$user-tls.json<<EOF
       "type": "none",
       "host": "$sni",
       "tls": "tls",
-	  "sni": "$sni"
 }
 EOF
 cat>/usr/local/etc/xray/$user-none.json<<EOF
       {
       "v": "2",
       "ps": "${user}",
-      "add": "${sts}${domain}",
+      "add": "${domain}",
       "port": "${none}",
       "id": "${uuid}",
       "aid": "0",
@@ -317,9 +316,9 @@ echo -e "\e[31m❌ Abuse Usage"
 echo -e "\e[31m❌ Multi-Login ID"
 echo -e "\e[31m❌ Sharing Premium Config\e[m"
 echo -e "\e[$line═════════════════════════════════\e[m"
-echo -e "Link TLS       : ${vmesslink1}"
+echo -e "Link TLS      : ${vmesslink1}"
 echo -e "\e[$line═════════════════════════════════\e[m"
-echo -e "Link None TLS  : ${vmesslink2}"
+echo -e "Link None TLS : ${vmesslink2}"
 echo -e "\e[$line═════════════════════════════════\e[m"
 echo -e "Link Yaml  : http://$MYIP:81/$user-clash-for-android.yaml"
 echo -e "\e[$line═════════════════════════════════\e[m"
@@ -346,20 +345,20 @@ export exp=$(date -d "$masaaktif days" +"%Y-%m-%d")
 
 # // Make Random Username
 export user=Trial`</dev/urandom tr -dc X-Z0-9 | head -c4`
-export patchtls=/trickers-vmesswstls
-export patchnontls=/trickers-vmesswsntls
+export patchtls=/vmess
+export patchnontls=/vmess
 export uuid=$(cat /proc/sys/kernel/random/uuid)
 
-read -p "   Bug Address (Example: www.google.com) : " address
-read -p "   Bug SNI/Host (Example : m.facebook.com) : " sni
+#read -p "   Bug Address (Example: www.google.com) : " address
+#read -p "   Bug SNI/Host (Example : m.facebook.com) : " sni
 
-bug_addr=${address}.
-bug_addr2=$address
-if [[ $address == "" ]]; then
-sts=$bug_addr2
-else
-sts=$bug_addr
-fi
+#bug_addr=${address}.
+#bug_addr2=$address
+#if [[ $address == "" ]]; then
+#sts=$bug_addr2
+#else
+#sts=$bug_addr
+#fi
 
 export harini=`date -d "0 days" +"%Y-%m-%d"`
 
@@ -372,7 +371,7 @@ cat>/usr/local/etc/xray/$user-tls.json<<EOF
       {
       "v": "2",
       "ps": "${user}",
-      "add": "${sts}${domain}",
+      "add": "${domain}",
       "port": "${tls}",
       "id": "${uuid}",
       "aid": "0",
@@ -381,14 +380,13 @@ cat>/usr/local/etc/xray/$user-tls.json<<EOF
       "type": "none",
       "host": "$sni",
       "tls": "tls",
-	  "sni": "$sni"
 }
 EOF
 cat>/usr/local/etc/xray/$user-none.json<<EOF
       {
       "v": "2",
       "ps": "${user}",
-      "add": "${sts}${domain}",
+      "add": "${domain}",
       "port": "${none}",
       "id": "${uuid}",
       "aid": "0",
@@ -529,9 +527,9 @@ echo -e "\e[31m❌ Abuse Usage"
 echo -e "\e[31m❌ Multi-Login ID"
 echo -e "\e[31m❌ Sharing Premium Config\e[m"
 echo -e "\e[$line═════════════════════════════════\e[m"
-echo -e "Link TLS       : ${vmesslink1}"
+echo -e "Link TLS      : ${vmesslink1}"
 echo -e "\e[$line═════════════════════════════════\e[m"
-echo -e "Link None TLS  : ${vmesslink2}"
+echo -e "Link None TLS : ${vmesslink2}"
 echo -e "\e[$line═════════════════════════════════\e[m"
 echo -e "Link Yaml  : http://$MYIP:81/$user-clash-for-android.yaml"
 echo -e "\e[$line═════════════════════════════════\e[m"
@@ -685,7 +683,7 @@ cat>/usr/local/etc/xray/$user-tls.json<<EOF
       {
       "v": "2",
       "ps": "${user}",
-      "add": "${sts}${domain}",
+      "add": "${domain}",
       "port": "${tls}",
       "id": "${uuid}",
       "aid": "0",
@@ -694,14 +692,13 @@ cat>/usr/local/etc/xray/$user-tls.json<<EOF
       "type": "none",
       "host": "bug.com",
       "tls": "tls",
-	  "sni": "bug.com"
 }
 EOF
 cat>/usr/local/etc/xray/$user-none.json<<EOF
       {
       "v": "2",
       "ps": "${user}",
-      "add": "${sts}${domain}",
+      "add": "${domain}",
       "port": "${none}",
       "id": "${uuid}",
       "aid": "0",
@@ -836,9 +833,9 @@ echo -e "\e[31m❌ Abuse Usage"
 echo -e "\e[31m❌ Multi-Login ID"
 echo -e "\e[31m❌ Sharing Premium Config\e[m"
 echo -e "\e[$line═════════════════════════════════\e[m"
-echo -e "Link TLS       : ${vmesslink1}"
+echo -e "Link TLS      : ${vmesslink1}"
 echo -e "\e[$line═════════════════════════════════\e[m"
-echo -e "Link None TLS  : ${vmesslink2}"
+echo -e "Link None TLS : ${vmesslink2}"
 echo -e "\e[$line═════════════════════════════════\e[m"
 echo -e "Link Yaml  : http://$MYIP:81/$user-clash-for-android.yaml"
 echo -e "\e[$line═════════════════════════════════\e[m"
@@ -916,17 +913,17 @@ export patchtls=/vless
 export patchnontls=/vless
 export uuid=$(cat /proc/sys/kernel/random/uuid)
 
-read -p "   Bug Address (Example: www.google.com) : " address
-read -p "   Bug SNI/Host (Example : m.facebook.com) : " sni
-read -p "   Expired (days) : " masaaktif
+#read -p "   Bug Address (Example: www.google.com) : " address
+#read -p "   Bug SNI/Host (Example : m.facebook.com) : " sni
+#read -p "   Expired (days) : " masaaktif
 
-bug_addr=${address}.
-bug_addr2=$address
-if [[ $address == "" ]]; then
-sts=$bug_addr2
-else
-sts=$bug_addr
-fi
+#bug_addr=${address}.
+#bug_addr2=$address
+#if [[ $address == "" ]]; then
+#sts=$bug_addr2
+#else
+#sts=$bug_addr
+#fi
 
 export exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
 export harini=`date -d "0 days" +"%Y-%m-%d"`
@@ -936,8 +933,8 @@ sed -i '/#xray-vless-tls$/a\#vls '"$user $exp $harini $uuid"'\
 sed -i '/#xray-vless-nontls$/a\#vls '"$user $exp $harini $uuid"'\
 },{"id": "'""$uuid""'","email": "'""$user""'"' /usr/local/etc/xray/vlessnone.json
 
-export vlesslink1="vless://${uuid}@${sts}${domain}:$tls?path=$patchtls&security=tls&encryption=none&type=ws&sni=$sni#${user}"
-export vlesslink2="vless://${uuid}@${sts}${domain}:$none?path=$patchnontls&encryption=none&host=$sni&type=ws#${user}"
+export vlesslink1="vless://${uuid}@${domain}:$tls?path=$patchtls&security=tls&encryption=none&type=ws&sni=$sni#${user}"
+export vlesslink2="vless://${uuid}@${domain}:$none?path=$patchnontls&encryption=none&host=$sni&type=ws#${user}"
 
 systemctl restart xray@vless
 systemctl restart xray@vlessnone
@@ -971,9 +968,9 @@ echo -e "\e[31m❌ Abuse Usage"
 echo -e "\e[31m❌ Multi-Login ID"
 echo -e "\e[31m❌ Sharing Premium Config\e[m"
 echo -e "\e[$line═════════════════════════════════\e[m"
-echo -e "Link TLS         : ${vlesslink1}"
+echo -e "Link TLS      : ${vlesslink1}"
 echo -e "\e[$line═════════════════════════════════\e[m"
-echo -e "Link None TLS    : ${vlesslink2}"
+echo -e "Link None TLS : ${vlesslink2}"
 echo -e "\e[$line═════════════════════════════════\e[m"
 echo -e "Created   : $harini"
 echo -e "Expired   : $exp"
@@ -999,20 +996,20 @@ export exp=$(date -d "$masaaktif days" +"%Y-%m-%d")
 # Make Random Username
 export user=Trial`</dev/urandom tr -dc X-Z0-9 | head -c4`
 
-export patchtls=/trickers-vlesswstls
-export patchnontls=/trickers-vlesswsntls
+export patchtls=/vless
+export patchnontls=/vless
 export uuid=$(cat /proc/sys/kernel/random/uuid)
 
-read -p "   Bug Address (Example: www.google.com) : " address
-read -p "   Bug SNI/Host (Example : m.facebook.com) : " sni
+#read -p "   Bug Address (Example: www.google.com) : " address
+#read -p "   Bug SNI/Host (Example : m.facebook.com) : " sni
 
-bug_addr=${address}.
-bug_addr2=$address
-if [[ $address == "" ]]; then
-sts=$bug_addr2
-else
-sts=$bug_addr
-fi
+#bug_addr=${address}.
+#bug_addr2=$address
+#if [[ $address == "" ]]; then
+#sts=$bug_addr2
+#else
+#sts=$bug_addr
+#fi
 
 export harini=`date -d "0 days" +"%Y-%m-%d"`
 
@@ -1021,8 +1018,8 @@ sed -i '/#xray-vless-tls$/a\#vls '"$user $exp $harini $uuid"'\
 sed -i '/#xray-vless-nontls$/a\#vls '"$user $exp $harini $uuid"'\
 },{"id": "'""$uuid""'","email": "'""$user""'"' /usr/local/etc/xray/vlessnone.json
 
-export vlesslink1="vless://${uuid}@${sts}${domain}:$tls?path=$patchtls&security=tls&encryption=none&type=ws&sni=$sni#${user}"
-export vlesslink2="vless://${uuid}@${sts}${domain}:$none?path=$patchnontls&encryption=none&host=$sni&type=ws#${user}"
+export vlesslink1="vless://${uuid}@${domain}:$tls?path=$patchtls&security=tls&encryption=none&type=ws&sni=$sni#${user}"
+export vlesslink2="vless://${uuid}@$${domain}:$none?path=$patchnontls&encryption=none&host=$sni&type=ws#${user}"
 
 systemctl restart xray@vless
 systemctl restart xray@vlessnone
@@ -1056,9 +1053,9 @@ echo -e "\e[31m❌ Abuse Usage"
 echo -e "\e[31m❌ Multi-Login ID"
 echo -e "\e[31m❌ Sharing Premium Config\e[m"
 echo -e "\e[$line═════════════════════════════════\e[m"
-echo -e "Link TLS         : ${vlesslink1}"
+echo -e "Link TLS      : ${vlesslink1}"
 echo -e "\e[$line═════════════════════════════════\e[m"
-echo -e "Link None TLS    : ${vlesslink2}"
+echo -e "Link None TLS : ${vlesslink2}"
 echo -e "\e[$line═════════════════════════════════\e[m"
 echo -e "Created   : $harini"
 echo -e "Expired   : $exp"
@@ -1203,8 +1200,8 @@ export harini=$(grep -E "^#vls " "/usr/local/etc/xray/vless.json" | cut -d ' ' -
 export exp=$(grep -E "^#vls " "/usr/local/etc/xray/vless.json" | cut -d ' ' -f 3 | sed -n "${CLIENT_NUMBER}"p)
 export uuid=$(grep -E "^#vls " "/usr/local/etc/xray/vless.json" | cut -d ' ' -f 5 | sed -n "${CLIENT_NUMBER}"p)
 
-export vlesslink1="vless://${uuid}@${sts}${domain}:$tls?path=$patchtls&security=tls&encryption=none&type=ws&sni=$sni#${user}"
-export vlesslink2="vless://${uuid}@${sts}${domain}:$none?path=$patchnontls&encryption=none&host=$sni&type=ws#${user}"
+export vlesslink1="vless://${uuid}@${domain}:$tls?path=$patchtls&security=tls&encryption=none&type=ws&sni=$sni#${user}"
+export vlesslink2="vless://${uuid}@${domain}:$none?path=$patchnontls&encryption=none&host=$sni&type=ws#${user}"
 
 clear
 echo -e ""
@@ -1235,9 +1232,9 @@ echo -e "\e[31m❌ Abuse Usage"
 echo -e "\e[31m❌ Multi-Login ID"
 echo -e "\e[31m❌ Sharing Premium Config\e[m"
 echo -e "\e[$line═════════════════════════════════\e[m"
-echo -e "Link TLS         : ${vlesslink1}"
+echo -e "Link TLS      : ${vlesslink1}"
 echo -e "\e[$line═════════════════════════════════\e[m"
-echo -e "Link None TLS    : ${vlesslink2}"
+echo -e "Link None TLS : ${vlesslink2}"
 echo -e "\e[$line═════════════════════════════════\e[m"
 echo -e "Created   : $harini"
 echo -e "Expired   : $exp"
@@ -1309,17 +1306,17 @@ until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
 		fi
 	done
 export uuid=$(cat /proc/sys/kernel/random/uuid)
-read -p "   Bug Address (Example: www.google.com) : " address
-read -p "   Bug SNI/Host (Example : m.facebook.com) : " sni
-read -p "   Expired (days) : " masaaktif
+#read -p "   Bug Address (Example: www.google.com) : " address
+#read -p "   Bug SNI/Host (Example : m.facebook.com) : " sni
+#read -p "   Expired (days) : " masaaktif
 
-bug_addr=${address}.
-bug_addr2=$address
-if [[ $address == "" ]]; then
-sts=$bug_addr2
-else
-sts=$bug_addr
-fi
+#bug_addr=${address}.
+#bug_addr2=$address
+#if [[ $address == "" ]]; then
+#sts=$bug_addr2
+#else
+#sts=$bug_addr
+#fi
 
 export exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
 export harini=`date -d "0 days" +"%Y-%m-%d"`
@@ -1327,8 +1324,8 @@ export harini=`date -d "0 days" +"%Y-%m-%d"`
 sed -i '/#xray-vless-xtls$/a\#vxtls '"$user $exp $harini $uuid"'\
 },{"id": "'""$uuid""'","flow": "'""xtls-rprx-direct""'","level": '"0"',"email": "'""$user""'"' /usr/local/etc/xray/config.json
 
-export vlesslink1="vless://${uuid}@${sts}${domain}:$xtls?security=xtls&encryption=none&headerType=none&type=tcp&flow=xtls-rprx-direct&sni=$sni#${user}"
-export vlesslink2="vless://${uuid}@${sts}${domain}:$xtls?security=xtls&encryption=none&headerType=none&type=tcp&flow=xtls-rprx-splice&sni=$sni#${user}"
+export vlesslink1="vless://${uuid}@${domain}:$xtls?security=xtls&encryption=none&headerType=none&type=tcp&flow=xtls-rprx-direct&sni=$sni#${user}"
+export vlesslink2="vless://${uuid}@${domain}:$xtls?security=xtls&encryption=none&headerType=none&type=tcp&flow=xtls-rprx-splice&sni=$sni#${user}"
 
 systemctl restart xray.service
 
@@ -1359,9 +1356,9 @@ echo -e "\e[31m❌ Abuse Usage"
 echo -e "\e[31m❌ Multi-Login ID"
 echo -e "\e[31m❌ Sharing Premium Config\e[m"
 echo -e "\e[$line═════════════════════════════════\e[m"
-echo -e "Link Xtls Direct  : ${vlesslink1}"
+echo -e "Link Xtls Direct : ${vlesslink1}"
 echo -e "\e[$line═════════════════════════════════\e[m"
-echo -e "Link Xtls Splice  : ${vlesslink2}"
+echo -e "Link Xtls Splice : ${vlesslink2}"
 echo -e "\e[$line═════════════════════════════════\e[m"
 echo -e "Created  : $harini"
 echo -e "Expired  : $exp"
@@ -1387,24 +1384,24 @@ export exp=$(date -d "$masaaktif days" +"%Y-%m-%d")
 export user=Trial`</dev/urandom tr -dc X-Z0-9 | head -c4`
 export uuid=$(cat /proc/sys/kernel/random/uuid)
 
-read -p "   Bug Address (Example: www.google.com) : " address
-read -p "   Bug SNI/Host (Example : m.facebook.com) : " sni
+#read -p "   Bug Address (Example: www.google.com) : " address
+#read -p "   Bug SNI/Host (Example : m.facebook.com) : " sni
 
-bug_addr=${address}.
-bug_addr2=$address
-if [[ $address == "" ]]; then
-sts=$bug_addr2
-else
-sts=$bug_addr
-fi
+#bug_addr=${address}.
+#bug_addr2=$address
+#if [[ $address == "" ]]; then
+#sts=$bug_addr2
+#else
+#sts=$bug_addr
+#fi
 
 export harini=`date -d "0 days" +"%Y-%m-%d"`
 
 sed -i '/#xray-vless-xtls$/a\#vxtls '"$user $exp $harini $uuid"'\
 },{"id": "'""$uuid""'","flow": "'""xtls-rprx-direct""'","level": '"0"',"email": "'""$user""'"' /usr/local/etc/xray/config.json
 
-export vlesslink1="vless://${uuid}@${sts}${domain}:$xtls?security=xtls&encryption=none&headerType=none&type=tcp&flow=xtls-rprx-direct&sni=$sni#${user}"
-export vlesslink2="vless://${uuid}@${sts}${domain}:$xtls?security=xtls&encryption=none&headerType=none&type=tcp&flow=xtls-rprx-splice&sni=$sni#${user}"
+export vlesslink1="vless://${uuid}@${domain}:$xtls?security=xtls&encryption=none&headerType=none&type=tcp&flow=xtls-rprx-direct&sni=$sni#${user}"
+export vlesslink2="vless://${uuid}@${domain}:$xtls?security=xtls&encryption=none&headerType=none&type=tcp&flow=xtls-rprx-splice&sni=$sni#${user}"
 
 systemctl restart xray.service
 
