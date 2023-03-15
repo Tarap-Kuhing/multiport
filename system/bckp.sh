@@ -3,7 +3,10 @@ echo -e "\e[32mloading...\e[0m"
 clear
 IP=$(wget -qO- icanhazip.com);
 date=$(date +"%Y-%m-%d")
-email=$(cat /home/email)
+clear
+echo " Enter Your Email To Receive Message"
+read -rp " Email: " -e email
+sleep 1
 echo Directory Created
 mkdir /root/backup
 sleep 1
@@ -19,7 +22,6 @@ cp -r /var/lib/ backup
 cp -r /usr/local/etc/xray backup/xray
 cp -r /etc/trojan-go backup/trojan-go
 cp -r /usr/local/shadowsocksr/ backup/shadowsocksr
-cp /etc/crontab backup/crontab
 cp -r /home/vps/public_html backup/public_html
 cd /root
 zip -r $IP-$date.zip backup > /dev/null 2>&1
@@ -38,4 +40,5 @@ If you want to restore data, please enter the link above.
 Thank You For Using Our Services" | mail -s "Backup Data" $email
 rm -rf /root/backup
 rm -r /root/$IP-$date.zip
-echo Done
+echo "Done"
+echo "Please Check Your Email"
