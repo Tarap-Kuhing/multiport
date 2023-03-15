@@ -1,7 +1,5 @@
 #!/bin/bash
-#wget https://github.com/${GitUser}/
-GitUser="Tarap-Kuhing"
-#IZIN SCRIPT
+#
 MYIP=$(curl -sS ipv4.icanhazip.com)
 clear
 #Domain
@@ -37,7 +35,7 @@ oid=$(cat /usr/bin/ver)
 exp=$(cat /usr/bin/e)
 clear
 version=$(cat /home/ver)
-ver=$( curl https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/version )
+ver=$( curl https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/versi )
 clear
 # CEK UPDATE
 Green_font_prefix="\033[32m" && Red_font_prefix="\033[31m" && Green_background_prefix="\033[42;37m" && Red_background_prefix="\033[41;37m" && Font_color_suffix="\033[0m"
@@ -45,7 +43,7 @@ Info1="${Green_font_prefix}$version${Font_color_suffix}"
 Info2="${Green_font_prefix} Latest Version ${Font_color_suffix}"
 Error=" Version ${Green_font_prefix}[$ver]${Font_color_suffix} Available${Red_font_prefix}[Update]${Font_color_suffix}"
 version=$(cat /home/ver)
-new_version=$( curl https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/version | grep $version )
+new_version=$( curl https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/versi | grep $version )
 #Status Version
 if [ $version = $new_version ]; then
 stl="${Info2}"
