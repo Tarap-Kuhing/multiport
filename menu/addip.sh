@@ -1,4 +1,80 @@
 #!/bin/bash
+ntributor
+294 lines (273 sloc)  10.4 KB
+#!/bin/bash
+dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
+biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
+###########- COLOR CODE -##############
+colornow=$(cat /etc/tarap/theme/color.conf)
+export NC="\e[0m"
+export YELLOW='\033[0;33m';
+export RED="\033[0;31m"
+export COLOR1="$(cat /etc/tarap/theme/$colornow | grep -w "TEXT" | cut -d: -f2|sed 's/ //g')"
+export COLBG1="$(cat /etc/tarap/theme/$colornow | grep -w "BG" | cut -d: -f2|sed 's/ //g')"
+WH='\033[1;37m'
+###########- END COLOR CODE -##########
+
+BURIQ () {
+    curl -sS https://raw.githubusercontent.com/jambanbkn/tarap/main/ipvps > /root/tmp
+    data=( `cat /root/tmp | grep -E "^### " | awk '{print $2}'` )
+    for user in "${data[@]}"
+    do
+    exp=( `grep -E "^### $user" "/root/tmp" | awk '{print $3}'` )
+    d1=(`date -d "$exp" +%s`)
+    d2=(`date -d "$biji" +%s`)
+    exp2=$(( (d1 - d2) / 86400 ))
+    if [[ "$exp2" -le "0" ]]; then
+    echo $user > /etc/.$user.ini
+    else
+    rm -f /etc/.$user.ini > /dev/null 2>&1
+    fi
+    done
+    rm -f /root/tmp
+}
+
+MYIP=$(curl -sS ipv4.icanhazip.com)
+Name=$(curl -sS https://raw.githubusercontent.com/jambanbkn/tarap/main/ipvps | grep $MYIP | awk '{print $2}')
+echo $Name > /usr/local/etc/.$Name.ini
+CekOne=$(cat /usr/local/etc/.$Name.ini)
+
+Bloman () {
+if [ -f "/etc/.$Name.ini" ]; then
+CekTwo=$(cat /etc/.$Name.ini)
+    if [ "$CekOne" = "$CekTwo" ]; then
+        res="Expired"
+    fi
+else
+res="Permission Accepted..."
+fi
+}
+
+PERMISSION () {
+    MYIP=$(curl -sS ipv4.icanhazip.com)
+    IZIN=$(curl -sS https://raw.githubusercontent.com/jambanbkn/tarap/main/ipvps | awk '{print $4}' | grep $MYIP)
+    if [ "$MYIP" = "$IZIN" ]; then
+    Bloman
+    else
+    res="Permission Denied!"
+    fi
+    BURIQ
+}
+red='\e[1;31m'
+green='\e[1;32m'
+yellow='\033[0;33m'
+NC='\e[0m'
+green() { echo -e "\\033[32;1m${*}\\033[0m"; }
+red() { echo -e "\\033[31;1m${*}\\033[0m"; }
+PERMISSION
+if [ -f /home/needupdate ]; then
+red "Your script need to update first !"
+exit 0
+elif [ "$res" = "Permission Accepted..." ]; then
+echo -ne
+else
+red "Permission Denied!"
+exit 0
+fi
+clear
 # Color Validation
 DF='\e[39m'
 Bold='\e[1m'
@@ -19,32 +95,32 @@ GREEN='\033[0;32m'
 ORANGE='\033[0;33m'
 CYAN='\e[36m'
 LIGHT='\033[0;37m'
-tokengit=$(cat /etc/adminip/access.conf)
+tokengit=$(cat /etc/tarap/access.conf)
 MYIP=$(wget -qO- ipinfo.io/ip);
-adminip=$( curl -sS https://raw.githubusercontent.com/DryanZ/allow/main/adminipvps | grep $MYIP )
-if [ $adminip = $MYIP ]; then
+tarap=$( curl -sS https://raw.githubusercontent.com/jambanbkn/tarap/main/ipvps | grep $MYIP )
+if [ $tarap = $MYIP ]; then
 echo -e "${green}Permission Accepted...${NC}"
 else
 rm -rf addip.sh
 clear
 echo -e "${red}Permission Denied!${NC}";
-echo "Owner Script Sahaja Boleh Login"
+echo "Owner Script Saja Boleh Login"
 exit 0
 fi
 
 setadmin() {
 #isi link git
-linkinstall="https://raw.githubusercontent.com/namagit/git-repo/main"
-rm -rf /etc/adminip/
-mkdir -p /etc/adminip
+linkinstall="https://raw.githubusercontent.com/jambanbkn/tarap/main"
+rm -rf /etc/tarap/
+mkdir -p /etc/tarap
 read -p "Masukan Token Code Github Anda : " ans
-echo -e "$ans" >> /etc/adminip/access.conf
-wget -O /usr/bin/xp-ip ${linkinstall}/xp-ip.sh && chmod +x /usr/bin/xp-ip
+echo -e "$ans" >> /etc/tarap/access.conf
+wget -O /usr/bin/ipvps ${linkinstall}/ipvps && chmod +x /usr/bin/ipvps
 clear
 sed -i "/^# IPREGBEGIN_EXP/,/^# IPREGEND_EXPIP/d" /etc/crontab
 cat << EOF >> /etc/crontab
 # IPREGBEGIN_EXP
-1 0 * * * root /usr/bin/xp-ip # delete expired IP VPS License
+1 0 * * * root /usr/bin/ipvps # delete expired IP VPS License
 # IPREGEND_EXPIP
 EOF
 rm -f /root/.bash_history
@@ -64,7 +140,7 @@ rm -rf /root/allow
 read -p "IP VPS      : " daftar
 echo -e "[ ${Lyellow}INFO${NC} ] Checking the IPVPS if Already Registered"
 sleep 1
-cek=$( curl -sS https://raw.githubusercontent.com/DryanZ/allow/main/ipvps.conf | awk '{print $5}' | grep $daftar )
+cek=$( curl -sS https://raw.githubusercontent.com/jambanbkn/tarap/main/ipvps | awk '{print $5}' | grep $daftar )
 if [[ $daftar = $cek ]]; then
 echo -e "\e[1;31m The IP VPS Has Been Registered\e[0m"
 sleep 2
@@ -96,23 +172,23 @@ add-ip
 fi
 
 daftarip=$(cat /root/data)
-rm -rf /root/allow
-git config --global user.email "almonika.cindy@outlook.com"
-git config --global user.name "DryanZ"
-git clone https://github.com/DryanZ/allow.git
-mkdir /root/allow
-cd /root/allow/
+rm -rf /root/ipvps
+git config --global user.email "jambanbkn@gmail.com"
+git config --global user.name "jambanbkn"
+git clone https://github.com/jambanbkn/ipvps.git
+mkdir /root/ipvps
+cd /root/ipvps/
 rm -rf .git
 git init
-touch ipvps.conf
-echo "$daftarip" >> /root/allow/ipvps.conf
+touch ipvps
+echo "$daftarip" >> /root/ipvps/ipvps
 echo -e "Client IP VPS Add Successfully"
 git init >/dev/null 2>&1
 git add .
 git commit -m register
 git branch -M main
-git remote add origin https://github.com/DryanZ/allow.git
-git push -f https://${tokengit}@github.com/DryanZ/allow.git
+git remote add origin https://github.com/jambanbkn/ipvps.git
+git push -f https://${tokengit}@github.com/jambanbkn/ipvps.git
 echo -e "IPVPS Registration Completed"
 sleep 1
 links1="apt-get update && apt-get upgrade -y && update-grub && sleep 2 && reboot"
@@ -127,7 +203,7 @@ echo "  Order ID      : $id"
 echo "  Register Date : $hariini"
 echo "  Expired Date  : $exp"
 echo "  Client Name   : $client"
-echo "  Script Ver    : DryanZ"
+echo "  Script Ver    : Tarap-Kuhing"
 echo -e "\033[0;34m------------------------------------------\033[0m"
 echo " Update & Upgrade First Your VPS for Debian 10 & 11: "
 echo ""
@@ -147,9 +223,9 @@ echo -e "\033[0;34m------------------------------------------\033[0m"
 echo "  Siapkan Email Cloudflare Untuk Cert Xray  "
 echo "  Pastikan Domain Dah Siap Pointing Di Cloudflare Sebelum Install  "
 echo -e "\033[0;34m------------------------------------------\033[0m"
-rm -rf /root/allow
+rm -rf /root/ipvps
 rm -rf /root/data
-rm -rf /root/ipvps.conf
+rm -rf /root/ipvps
 echo ""
 read -n 1 -s -r -p "Press any key to back on menu-addip"
 addip
@@ -163,17 +239,17 @@ clear
 exit 0
 fi
 clear
-rm -rf /root/allow
+rm -rf /root/ipvps
 rm -rf /root/data
-rm -rf /root/ipvps.conf
-git config --global user.email "almonika.cindy@outlook.com"
-git config --global user.name "DryanZ"
-git clone https://github.com/DryanZ/allow.git
-mkdir /root/allow
-cd /root/allow/
+rm -rf /root/ipvps
+git config --global user.email "jambanbkn@gmail.com"
+git config --global user.name "jambanbkn"
+git clone https://github.com/jambanbkn/ipvps.git
+mkdir /root/ipvps
+cd /root/ipvps/
 rm -rf .git
 git init
-touch ipvps.conf
+touch ipvps
 echo -e "[ ${Lyellow}INFO${NC} ] Checking list.."
 clear
 echo -e "\033[0;34m------------------------------------------\033[0m"
@@ -181,20 +257,20 @@ echo -e "\E[44;1;39m       Delete User IP VPS Registered      \E[0m"
 echo -e "\033[0;34m------------------------------------------\033[0m"
 echo -e "     No.     USER      EXP DATE    IPVPS"
 echo -e "\033[0;34m------------------------------------------\033[0m"
-grep -E "^### " "/root/allow/ipvps.conf" | cut -d ' ' -f 2-5 | nl -s '. '
+grep -E "^### " "/root/ipvps/ipvps" | cut -d ' ' -f 2-5 | nl -s '. '
 echo -e "\033[0;34m------------------------------------------\033[0m"
 read -rp " Please Input Number : " nombor 
-client=$(grep -E "^### " "/root/allow/ipvps.conf" | cut -d ' ' -f 2 | sed -n "${nombor}"p)
-id=$(grep -E "^### " "/root/allow/ipvps.conf" | cut -d ' ' -f 3 | sed -n "${nombor}"p)
-exp=$(grep -E "^### " "/root/allow/ipvps.conf" | cut -d ' ' -f 4 | sed -n "${nombor}"p)
-daftar=$(grep -E "^### " "/root/allow/ipvps.conf" | cut -d ' ' -f 5 | sed -n "${nombor}"p)
-sed -i '/^### '$client' '$id' '$exp' '$daftar'/d' /root/allow/ipvps.conf
+client=$(grep -E "^### " "/root/ipvps/ipvps" | cut -d ' ' -f 2 | sed -n "${nombor}"p)
+id=$(grep -E "^### " "/root/ipvps/ipvps" | cut -d ' ' -f 3 | sed -n "${nombor}"p)
+exp=$(grep -E "^### " "/root/ipvps/ipvps" | cut -d ' ' -f 4 | sed -n "${nombor}"p)
+daftar=$(grep -E "^### " "/root/ipvps/ipvps" | cut -d ' ' -f 5 | sed -n "${nombor}"p)
+sed -i '/^### '$client' '$id' '$exp' '$daftar'/d' /root/ipvps/ipvps
 git init >/dev/null 2>&1
 git add .
 git commit -m delete
 git branch -M main
-git remote add origin https://github.com/DryanZ/allow.git
-git push -f https://${tokengit}@github.com/DryanZ/allow.git
+git remote add origin https://github.com/jambanbkn/ipvps.git
+git push -f https://${tokengit}@github.com/jambanbkn/ipvps.git
 clear
 echo -e "\033[0;34m------------------------------------------\033[0m"
 echo -e "\E[44;1;39m      Client IP Deleted Successfully      \E[0m"
@@ -203,9 +279,9 @@ echo " Ip VPS       : $daftar"
 echo " Order ID     : $id"
 echo " Expired Date : $exp"
 echo " Client Name  : $client"
-rm -rf /root/allow
+rm -rf /root/ipvps
 rm -rf /root/data
-rm -rf /root/ipvps.conf
+rm -rf /root/ipvps
 echo ""
 read -n 1 -s -r -p "Press any key to back on menu-addip"
 addip
