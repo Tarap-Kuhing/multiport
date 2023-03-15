@@ -225,6 +225,8 @@ wget -O panel-domain "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/m
 wget -O dns "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/system/dns.sh"
 wget -O nf "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/system/nf.sh"
 wget -O addip "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/menu/addip.sh"
+wget -O tes "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/change-port/tes.sh"
+chmod +x tes
 chmod +x addip
 chmod +x add-host
 chmod +x menu
