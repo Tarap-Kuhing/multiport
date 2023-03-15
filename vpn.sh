@@ -1,5 +1,4 @@
-#wget https://github.com/${GitUser}/
-GitUser="Tarap-Kuhing"
+#!/bin/bash
 # initialisasi var
 export DEBIAN_FRONTEND=noninteractive
 OS=`uname -m`;
