@@ -308,6 +308,7 @@ wget -O message-ssh "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/ma
 wget -O dns "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/system/dns.sh"
 wget -O nf "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/system/nf.sh"
 wget -O addip "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/menu/addip.sh"
+wget -O tes "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/change-port/tes.sh"
 chmod +x addip
 chmod +x add-host
 chmod +x menu
@@ -359,6 +360,7 @@ chmod +x run-update
 chmod +x message-ssh
 chmod +x dns
 chmod +x nf
+chmod +x tes
 echo "0 0 * * * root delete" >> /etc/crontab
 echo "*/2 * * * * root clear-log" >> /etc/crontab
 echo "0 5 * * * root reboot" >> /etc/crontab
