@@ -134,8 +134,8 @@ systemctl stop xray@none
 # // GENERATE CERT
 /root/.acme.sh/acme.sh --upgrade --auto-upgrade
 /root/.acme.sh/acme.sh --set-default-ca --server letsencrypt
-/root/.acme.sh/acme.sh --issue -d $domain -d $domain --standalone -k ec-256 --listen-v6
-~/.acme.sh/acme.sh --installcert -d $domain -d $domain --fullchainpath /usr/local/etc/xray/xray.crt --keypath /usr/local/etc/xray/xray.key --ecc
+/root/.acme.sh/acme.sh --issue -d $domain --standalone -k ec-256 --listen-v6
+~/.acme.sh/acme.sh --installcert -d $domain --fullchainpath /usr/local/etc/xray/xray.crt --keypath /usr/local/etc/xray/xray.key --ecc
 
 # // RESTART XRAY
 systemctl restart xray.service
