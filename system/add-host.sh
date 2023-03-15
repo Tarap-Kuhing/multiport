@@ -93,7 +93,6 @@ echo "$host" > /usr/local/etc/xray/domain
 export dom=$(cat /etc/xray/domain)
 export domain=$(cat /usr/local/etc/xray/domain)
 
-sed -i "s/sshws.${dom}/sshws.${domain}/g" /usr/local/etc/xray/config.json;
 rm -f /etc/xray/domain;
 echo "$host" > /etc/xray/domain
 
