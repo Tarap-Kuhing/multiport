@@ -1,5 +1,4 @@
-#wget https://github.com/${GitUser}/
-GitUser="Tarap-Kuhing"
+#!/bin/bash
 #Direct Proxy Squid For OpenVPN TCP
 RED='\e[1;31m'
 GREEN='\e[0;32m'
@@ -21,7 +20,7 @@ Port_OHP='8686';
 
 #Installing ohp Server
 cd
-wget -O /usr/local/bin/ohps "https://raw.githubusercontent.com/${GitUser}/multiport/main/ohps"
+wget -O /usr/local/bin/ohps "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/ohps"
 chmod +x /usr/local/bin/ohps
 
 #Buat Service Untuk OHP SSH
