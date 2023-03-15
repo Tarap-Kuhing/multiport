@@ -1,7 +1,4 @@
 #!/bin/bash
-ntributor
-294 lines (273 sloc)  10.4 KB
-#!/bin/bash
 dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
 biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
 ###########- COLOR CODE -##############
