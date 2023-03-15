@@ -111,7 +111,8 @@ echo -e "   \e[$number (13)\e[m \e[$below Info All Port\e[m"
 echo -e "   \e[$number (14)\e[m \e[$below Install BBR\e[m"
 echo -e "   \e[$number (15)\e[m \e[$below ON/OF Auto Reboot\e[m"
 echo -e "   \e[$number (16)\e[m \e[$below Change Password VPS\e[m"
-echo -e "   \e[$number (17)\e[m \e[$below Update Script\e[m"
+echo -e "   \e[$number (17)\e[m \e[$below Backup\e[m"
+echo -e "   \e[$number (18)\e[m \e[$below Update Script\e[m"
 echo -e "   \e[$line════════════════════════════════════════\e[m"
 echo -e "   \e[$back_text \e[$box x)   MENU                             \e[m"
 echo -e "   \e[$line════════════════════════════════════════\e[m"
@@ -168,6 +169,9 @@ autoreboot
 passwd
 ;;
 17)
+tes
+;;
+18)
 update
 ;;
 x)
