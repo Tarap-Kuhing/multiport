@@ -1,19 +1,18 @@
-#wget https://github.com/${GitUser}/
-GitUser="Tarap-Kuhing"
-
+#!/bin/bash
 dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
 biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
 ###########- COLOR CODE -##############
 colornow=$(cat /etc/tarap/theme/color.conf)
-NC="\e[0m"
-RED="\033[0;31m"
-COLOR1="$(cat /etc/tarap/theme/$colornow | grep -w "TEXT" | cut -d: -f2|sed 's/ //g')"
-COLBG1="$(cat /etc/tarap/theme/$colornow | grep -w "BG" | cut -d: -f2|sed 's/ //g')"
+export NC="\e[0m"
+export YELLOW='\033[0;33m';
+export RED="\033[0;31m"
+export COLOR1="$(cat /etc/tarap/theme/$colornow | grep -w "TEXT" | cut -d: -f2|sed 's/ //g')"
+export COLBG1="$(cat /etc/tarap/theme/$colornow | grep -w "BG" | cut -d: -f2|sed 's/ //g')"
 WH='\033[1;37m'
 ###########- END COLOR CODE -##########
 
 BURIQ () {
-    curl -sS https://raw.githubusercontent.com/Tarap-Kuhing/Profile/main/Tarap-Kuhing > /root/tmp
+    curl -sS https://raw.githubusercontent.com/jambanbkn/tarap/main/ipvps > /root/tmp
     data=( `cat /root/tmp | grep -E "^### " | awk '{print $2}'` )
     for user in "${data[@]}"
     do
@@ -31,7 +30,7 @@ BURIQ () {
 }
 
 MYIP=$(curl -sS ipv4.icanhazip.com)
-Name=$(curl -sS https://raw.githubusercontent.com/Tarap-Kuhing/Profile/main/Tarap-Kuhing | grep $MYIP | awk '{print $2}')
+Name=$(curl -sS https://raw.githubusercontent.com/jambanbkn/tarap/main/ipvps | grep $MYIP | awk '{print $2}')
 echo $Name > /usr/local/etc/.$Name.ini
 CekOne=$(cat /usr/local/etc/.$Name.ini)
 
@@ -48,7 +47,7 @@ fi
 
 PERMISSION () {
     MYIP=$(curl -sS ipv4.icanhazip.com)
-    IZIN=$(curl -sS https://raw.githubusercontent.com/Tarap-Kuhing/Profile/main/Tarap-Kuhing | awk '{print $4}' | grep $MYIP)
+    IZIN=$(curl -sS https://raw.githubusercontent.com/jambanbkn/tarap/main/ipvps | awk '{print $4}' | grep $MYIP)
     if [ "$MYIP" = "$IZIN" ]; then
     Bloman
     else
@@ -58,6 +57,7 @@ PERMISSION () {
 }
 red='\e[1;31m'
 green='\e[1;32m'
+yellow='\033[0;33m'
 NC='\e[0m'
 green() { echo -e "\\033[32;1m${*}\\033[0m"; }
 red() { echo -e "\\033[31;1m${*}\\033[0m"; }
@@ -72,6 +72,7 @@ red "Permission Denied!"
 exit 0
 fi
 clear
+
 
 # // PROVIDED
 clear
@@ -131,12 +132,12 @@ until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
 			exit 1
 		fi
 	done
-export patchtls=/trickers-vmesswstls
-export patchnontls=/trickers-vmesswsntls
+export patchtls=/vmess
+export patchnontls=/vmess
 export uuid=$(cat /proc/sys/kernel/random/uuid)
 
-read -p "   Bug Address (Example: www.google.com) : " address
-read -p "   Bug SNI/Host (Example : m.facebook.com) : " sni
+read -p "   Bug Address    : " address
+read -p "   Bug SNI/Host   : " sni
 read -p "   Expired (days) : " masaaktif
 
 bug_addr=${address}.
@@ -674,8 +675,8 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^#vms " "/usr/local/etc/xray/vmess.json")
 			read -rp "Select one client [1-${NUMBER_OF_CLIENTS}]: " CLIENT_NUMBER
 		fi
 	done
-export patchtls=/trickers-vmesswstls
-export patchnontls=/trickers-vmesswsntls
+export patchtls=/vmess
+export patchnontls=/vmess
 export user=$(grep -E "^#vms " "/usr/local/etc/xray/vmess.json" | cut -d ' ' -f 2 | sed -n "${CLIENT_NUMBER}"p)
 export harini=$(grep -E "^#vms " "/usr/local/etc/xray/vmess.json" | cut -d ' ' -f 4 | sed -n "${CLIENT_NUMBER}"p)
 export exp=$(grep -E "^#vms " "/usr/local/etc/xray/vmess.json" | cut -d ' ' -f 3 | sed -n "${CLIENT_NUMBER}"p)
@@ -911,8 +912,8 @@ until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
 			exit 1
 		fi
 	done
-export patchtls=/trickers-vlesswstls
-export patchnontls=/trickers-vlesswsntls
+export patchtls=/vless
+export patchnontls=/vless
 export uuid=$(cat /proc/sys/kernel/random/uuid)
 
 read -p "   Bug Address (Example: www.google.com) : " address
@@ -1195,8 +1196,8 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^#vls " "/usr/local/etc/xray/vless.json")
 			read -rp "Select one client [1-${NUMBER_OF_CLIENTS}]: " CLIENT_NUMBER
 		fi
 	done
-export patchtls=/trickers-vlesswstls
-export patchnontls=/trickers-vlesswsntls
+export patchtls=/vless
+export patchnontls=/vless
 export user=$(grep -E "^#vls " "/usr/local/etc/xray/vless.json" | cut -d ' ' -f 2 | sed -n "${CLIENT_NUMBER}"p)
 export harini=$(grep -E "^#vls " "/usr/local/etc/xray/vless.json" | cut -d ' ' -f 4 | sed -n "${CLIENT_NUMBER}"p)
 export exp=$(grep -E "^#vls " "/usr/local/etc/xray/vless.json" | cut -d ' ' -f 3 | sed -n "${CLIENT_NUMBER}"p)
