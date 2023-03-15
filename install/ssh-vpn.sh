@@ -164,19 +164,19 @@ socket = l:TCP_NODELAY=1
 socket = r:TCP_NODELAY=1
 
 [dropbear]
-accept = 222
+accept = 8880
 connect = 127.0.0.1:22
 
 [dropbear]
-accept = 777
+accept = 8443
 connect = 127.0.0.1:109
 
 [openvpn]
-accept = 442
+accept = 990
 connect = 127.0.0.1:1194
 
 [kontol-stunnel]
-accept = 2096
+accept = 444
 connect = 127.0.0.1:2091
 END
 
