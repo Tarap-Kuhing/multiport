@@ -1,7 +1,4 @@
 #!/bin/bash
-# // wget https://github.com/${GitUser}/
-GitUser="Tarap-Kuhing"
-
 dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
 biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
 ###########- COLOR CODE -##############
@@ -14,7 +11,7 @@ WH='\033[1;37m'
 ###########- END COLOR CODE -##########
 
 BURIQ () {
-    curl -sS https://raw.githubusercontent.com/Tarap-Kuhing/Profile/main/Tarap-Kuhing > /root/tmp
+    curl -sS https://raw.githubusercontent.com/jambanbkn/tarap/main/ipvps > /root/tmp
     data=( `cat /root/tmp | grep -E "^### " | awk '{print $2}'` )
     for user in "${data[@]}"
     do
@@ -32,7 +29,7 @@ BURIQ () {
 }
 
 MYIP=$(curl -sS ipv4.icanhazip.com)
-Name=$(curl -sS https://raw.githubusercontent.com/Tarap-Kuhing/Profile/main/Tarap-Kuhing | grep $MYIP | awk '{print $2}')
+Name=$(curl -sS https://raw.githubusercontent.com/jambanbkn/tarap/main/ipvps | grep $MYIP | awk '{print $2}')
 echo $Name > /usr/local/etc/.$Name.ini
 CekOne=$(cat /usr/local/etc/.$Name.ini)
 
@@ -49,7 +46,7 @@ fi
 
 PERMISSION () {
     MYIP=$(curl -sS ipv4.icanhazip.com)
-    IZIN=$(curl -sS https://raw.githubusercontent.com/Tarap-Kuhing/Profile/main/Tarap-Kuhing | awk '{print $4}' | grep $MYIP)
+    IZIN=$(curl -sS https://raw.githubusercontent.com/jambanbkn/tarap/main/ipvps | awk '{print $4}' | grep $MYIP)
     if [ "$MYIP" = "$IZIN" ]; then
     Bloman
     else
@@ -433,7 +430,7 @@ cat> /usr/local/etc/xray/vless.json << END
                 "security": "none",
                 "wsSettings": {
                     "acceptProxyProtocol": true,
-                    "path": "/trickers-vlesswstls"
+                    "path": "/vless"
                 }
             }
         }
@@ -543,7 +540,7 @@ cat> /usr/local/etc/xray/vlessnone.json << END
          "network": "ws",
             "wsSettings": {
               "acceptProxyProtocol": true,
-                "path": "/trickers-vlesswsntls"
+                "path": "/vless"
 
                 }
             }
@@ -657,7 +654,7 @@ cat> /usr/local/etc/xray/vmess.json << END
                 "security": "none",
                 "wsSettings": {
                     "acceptProxyProtocol": true,
-                    "path": "/trickers-vmesswstls"
+                    "path": "/vmess"
                 }
             }
         }
@@ -767,7 +764,7 @@ cat> /usr/local/etc/xray/vmessnone.json << END
          "network": "ws",
             "wsSettings": {
               "acceptProxyProtocol": true,
-                "path": "/trickers-vmesswsntls"
+                "path": "/vmess"
                 }
             }
         }
@@ -879,7 +876,7 @@ cat> /usr/local/etc/xray/trojan.json << END
            "network": "ws",
            "wsSettings": {
              "acceptProxyProtocol": true,
-               "path": "/trickers-trojanwstls"
+               "path": "/trojan"
              }
           }
        }
@@ -990,7 +987,7 @@ cat> /usr/local/etc/xray/trojannone.json << END
            "network": "ws",
            "wsSettings": {
              "acceptProxyProtocol": true,
-               "path": "/trickers-trojanwsntls"
+               "path": "/trojan"
              }
           }
        }
@@ -1100,17 +1097,17 @@ cat> /usr/local/etc/xray/none.json << END
             "xver": 1
           },
           {
-            "path": "/trickers-vlesswsntls", # // VLESS NONE
+            "path": "/vless", # // VLESS NONE
             "dest": 1301,
             "xver": 1
           },
           {
-            "path": "/trickers-vmesswsntls", # // VMESS NONE
+            "path": "/vmess", # // VMESS NONE
             "dest": 1302,
             "xver": 1
           },
           {
-             "path": "/trickers-trojanwsntls", # // TROJAN NONE
+             "path": "/trojan", # // TROJAN NONE
             "dest": 1303,
             "xver": 1
           }
@@ -1246,10 +1243,10 @@ systemctl restart xray@trojannone
 
 # download script
 cd /usr/bin
-wget -O port-xray "https://raw.githubusercontent.com/${GitUser}/multiport/main/change-port/port-xray.sh"
-wget -O certv2ray "https://raw.githubusercontent.com/${GitUser}/multiport/main/cert.sh"
-wget -O trojaan "https://raw.githubusercontent.com/${GitUser}/multiport/main/menu/trojaan.sh"
-wget -O xraay "https://raw.githubusercontent.com/${GitUser}/multiport/main/menu/xraay.sh"
+wget -O port-xray "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/change-port/port-xray.sh"
+wget -O certv2ray "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/cert.sh"
+wget -O trojaan "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/menu/trojaan.sh"
+wget -O xraay "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/menu/xraay.sh"
 chmod +x port-xray
 chmod +x certv2ray
 chmod +x trojaan
