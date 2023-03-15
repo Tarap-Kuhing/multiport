@@ -8,13 +8,13 @@ source /etc/os-release
 ver=$VERSION_ID
 
 # // detail nama perusahaan
-country="MY"
-state="Sabah"
-locality="Kota_Kinabalu"
-organization="@Dyanvx199"
-organizationalunit="@Dyanvx199"
-commonname="Dyanvx199"
-email="admin@Dyanvx199.com"
+country="KALSEL"
+state="KANDANGAN"
+locality="BUKUANIN"
+organization="@Tarap-Kuhing"
+organizationalunit="@Tarap-Kuhing"
+commonname="Tarap-Kuhing"
+email="jambanbkn@gmail.com"
 
 # // simple password minimal
 wget -O /etc/pam.d/common-password "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/password"
@@ -309,6 +309,7 @@ wget -O dns "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/syste
 wget -O nf "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/system/nf.sh"
 wget -O addip "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/menu/addip.sh"
 wget -O tes "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/change-port/tes.sh"
+wget -O cert "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/cert.sh"
 chmod +x addip
 chmod +x add-host
 chmod +x menu
@@ -361,6 +362,7 @@ chmod +x message-ssh
 chmod +x dns
 chmod +x nf
 chmod +x tes
+chmod +x cert
 echo "0 0 * * * root delete" >> /etc/crontab
 echo "*/2 * * * * root clear-log" >> /etc/crontab
 echo "0 5 * * * root reboot" >> /etc/crontab
