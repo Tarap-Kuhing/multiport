@@ -165,7 +165,7 @@ cat> /usr/local/etc/xray/config.json << END
                 "decryption": "none",
                 "fallbacks": [
                     {
-                        "name": "sshws.${domain}", # // SSH WS TLS JNGN CURI BERDOSA!!
+                        "name": "${domain}", # // SSH WS TLS JNGN CURI BERDOSA!!
                         "dest": 2091,
                         "xver": 1
                     },
@@ -174,17 +174,17 @@ cat> /usr/local/etc/xray/config.json << END
                         "xver": 1
                     },
                     {
-                        "path": "/trickers-vlesswstls", # // VMESS WS TLS
+                        "path": "/vless", # // VMESS WS TLS
                         "dest": 1212,
                         "xver": 1
                     },
                     {
-                        "path": "/trickers-vmesswstls", # // VLESS WS TLS
+                        "path": "/vmess", # // VLESS WS TLS
                         "dest": 1213,
                         "xver": 1
                     },
                     {
-                        "path": "/trickers-trojanwstls", # // TROJAN WS TLS
+                        "path": "/trojan", # // TROJAN WS TLS
                         "dest": 1214,
                         "xver": 1
                     }
