@@ -1,18 +1,18 @@
-#wget https://github.com/${GitUser}/
-GitUser="Tarap-Kuhing"
+#!/bin/bash
 dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
 biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
 ###########- COLOR CODE -##############
 colornow=$(cat /etc/tarap/theme/color.conf)
-NC="\e[0m"
-RED="\033[0;31m"
-COLOR1="$(cat /etc/tarap/theme/$colornow | grep -w "TEXT" | cut -d: -f2|sed 's/ //g')"
-COLBG1="$(cat /etc/tarap/theme/$colornow | grep -w "BG" | cut -d: -f2|sed 's/ //g')"
+export NC="\e[0m"
+export YELLOW='\033[0;33m';
+export RED="\033[0;31m"
+export COLOR1="$(cat /etc/tarap/theme/$colornow | grep -w "TEXT" | cut -d: -f2|sed 's/ //g')"
+export COLBG1="$(cat /etc/tarap/theme/$colornow | grep -w "BG" | cut -d: -f2|sed 's/ //g')"
 WH='\033[1;37m'
 ###########- END COLOR CODE -##########
 
 BURIQ () {
-    curl -sS https://raw.githubusercontent.com/Tarap-Kuhing/Profile/main/Tarap-Kuhing > /root/tmp
+    curl -sS https://raw.githubusercontent.com/jambanbkn/tarap/main/ipvps > /root/tmp
     data=( `cat /root/tmp | grep -E "^### " | awk '{print $2}'` )
     for user in "${data[@]}"
     do
@@ -30,7 +30,7 @@ BURIQ () {
 }
 
 MYIP=$(curl -sS ipv4.icanhazip.com)
-Name=$(curl -sS https://raw.githubusercontent.com/Tarap-Kuhing/Profile/main/Tarap-Kuhing | grep $MYIP | awk '{print $2}')
+Name=$(curl -sS https://raw.githubusercontent.com/jambanbkn/tarap/main/ipvps | grep $MYIP | awk '{print $2}')
 echo $Name > /usr/local/etc/.$Name.ini
 CekOne=$(cat /usr/local/etc/.$Name.ini)
 
@@ -47,7 +47,7 @@ fi
 
 PERMISSION () {
     MYIP=$(curl -sS ipv4.icanhazip.com)
-    IZIN=$(curl -sS https://raw.githubusercontent.com/Tarap-Kuhing/Profile/main/Tarap-Kuhing | awk '{print $4}' | grep $MYIP)
+    IZIN=$(curl -sS https://raw.githubusercontent.com/jambanbkn/tarap/main/ipvps | awk '{print $4}' | grep $MYIP)
     if [ "$MYIP" = "$IZIN" ]; then
     Bloman
     else
@@ -57,6 +57,7 @@ PERMISSION () {
 }
 red='\e[1;31m'
 green='\e[1;32m'
+yellow='\033[0;33m'
 NC='\e[0m'
 green() { echo -e "\\033[32;1m${*}\\033[0m"; }
 red() { echo -e "\\033[31;1m${*}\\033[0m"; }
@@ -73,7 +74,7 @@ fi
 clear
 echo ""
 version=$(cat /home/ver)
-ver=$( curl https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/version )
+ver=$( curl https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/versi )
 clear
 # LINE COLOUR
 line=$(cat /etc/line)
@@ -119,7 +120,7 @@ read -p "Please Choose 1 or x & y : " option2
 case $option2 in
 1)
 version=$(cat /home/ver)
-new_version=$( curl https://raw.githubusercontent.com/${GitUser}/multiport/main/version | grep $version )
+new_version=$( curl https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/versi | grep $version )
 if [ $version = $new_version ]; then
 clear
 echo ""
@@ -177,6 +178,100 @@ wget -O autobackup "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/mai
 wget -O backup "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/system/backup.sh"
 wget -O bckp "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/system/bckp.sh"
 wget -O restore "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/system/restore.sh"
+wget -O ins-xray https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/install/ins-xray.sh
+
+wget -O add-host "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/system/add-host.sh"
+wget -O about "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/system/about.sh"
+wget -O menu "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/menu.sh"
+wget -O add-ssh "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/add-user/add-ssh.sh"
+wget -O trial "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/add-user/trial.sh"
+wget -O maxisdigi "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/add-user/maxisdigi.sh"
+wget -O del-ssh "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/delete-user/del-ssh.sh"
+wget -O member "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/member.sh"
+wget -O delete "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/delete-user/delete.sh"
+wget -O cek-ssh "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/cek-user/cek-ssh.sh"
+wget -O restart "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/system/restart.sh"
+wget -O speedtest "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/system/speedtest_cli.py"
+wget -O ram "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/system/ram.sh"
+wget -O renew-ssh "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/renew-user/renew-ssh.sh"
+wget -O autokill "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/autokill.sh"
+wget -O ceklim "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/cek-user/ceklim.sh"
+wget -O tendang "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/tendang.sh"
+wget -O clear-log "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/clear-log.sh"
+wget -O change-port "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/change.sh"
+wget -O port-ovpn "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/change-port/port-ovpn.sh"
+wget -O port-ssl "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/change-port/port-ssl.sh"
+wget -O port-squid "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/change-port/port-squid.sh"
+wget -O port-websocket "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/change-port/port-websocket.sh"
+wget -O wbmn "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/webmin.sh"
+wget -O xp "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/xp.sh"
+wget -O kernel-updt "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/kernel.sh"
+wget -O user-list "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/more-option/user-list.sh"
+wget -O user-lock "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/more-option/user-lock.sh"
+wget -O user-unlock "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/more-option/user-unlock.sh"
+wget -O user-password "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/more-option/user-password.sh"
+wget -O antitorrent "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/more-option/antitorrent.sh"
+wget -O cfa "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/cloud/cfa.sh"
+wget -O cfd "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/cloud/cfd.sh"
+wget -O cfp "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/cloud/cfp.sh"
+wget -O swap "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/swapkvm.sh"
+wget -O check-sc "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/system/running.sh"
+wget -O ssh "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/menu/ssh.sh"
+wget -O autoreboot "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/system/autoreboot.sh"
+wget -O bbr "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/system/bbr.sh"
+wget -O port-ohp "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/change-port/port-ohp.sh"
+#wget -O port-xray "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/change-port/port-xray.sh"
+wget -O panel-domain "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/menu/panel-domain.sh"
+wget -O dns "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/system/dns.sh"
+wget -O nf "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/system/nf.sh"
+wget -O addip "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/menu/addip.sh"
+chmod +x addip
+chmod +x add-host
+chmod +x menu
+chmod +x add-ssh
+chmod +x trial
+chmod +x maxisdigi
+chmod +x del-ssh
+chmod +x member
+chmod +x delete
+chmod +x cek-ssh
+chmod +x restart
+chmod +x speedtest
+chmod +x about
+chmod +x autokill
+chmod +x tendang
+chmod +x ceklim
+chmod +x ram
+chmod +x renew-ssh
+chmod +x clear-log
+chmod +x change-port
+chmod +x restore
+chmod +x port-ovpn
+chmod +x port-ssl
+chmod +x port-squid
+chmod +x port-websocket
+chmod +x wbmn
+chmod +x xp
+chmod +x kernel-updt
+chmod +x user-list
+chmod +x user-lock
+chmod +x user-unlock
+chmod +x user-password
+chmod +x antitorrent
+chmod +x cfa
+chmod +x cfd
+chmod +x cfp
+chmod +x swap
+chmod +x check-sc
+chmod +x ssh
+chmod +x autoreboot
+chmod +x bbr
+chmod +x port-ohp
+#chmod +x port-xray
+chmod +x panel-domain
+chmod +x dns
+chmod +x nf
+
 chmod +x update
 chmod +x run-update
 chmod +x message-ssh
@@ -195,11 +290,12 @@ chmod +x autobackup
 chmod +x backup
 chmod +x bckp
 chmod +x restore
+chmod +x ins-xray
 clear
 echo -e ""
 echo -e "\e[0;32mDownloaded successfully!\e[0m"
 echo ""
-ver=$( curl https://raw.githubusercontent.com/${GitUser}/multiport/main/version )
+ver=$( curl https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/versi )
 sleep 1
 echo -e "\e[0;32mPatching New Update, Please Wait...\e[0m"
 echo ""
