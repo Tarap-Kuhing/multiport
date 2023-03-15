@@ -354,7 +354,7 @@ echo "   - OHP SSH                 : 8686"  | tee -a log-install.txt
 echo "   - OHP OpenVPN             : 8787"  | tee -a log-install.txt
 echo "   - Websocket SSH(HTTP)     : 80"  | tee -a log-install.txt
 echo "   - Websocket SSL(HTTPS)    : 443, 2096"  | tee -a log-install.txt
-echo "   - Websocket OpenVPN       : 2097"  | tee -a log-install.txt
+echo "   - Websocket OpenVPN       : 2086"  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
 echo "    [INFORMASI Sqd, Bdvp, Ngnx]" | tee -a log-install.txt
 echo "    ---------------------------" | tee -a log-install.txt
@@ -373,21 +373,16 @@ echo "   - Xray Vmess Ws None Tls  : 80"  | tee -a log-install.txt
 echo "   - Xray Vless Ws None Tls  : 80"  | tee -a log-install.txt
 echo "   - Xray Trojan Ws None Tls : 80"  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
-echo "    [INFORMASI CLASH FOR ANDROID (YAML)]"  | tee -a log-install.txt
 echo "    -----------------------------------" | tee -a log-install.txt
-echo "   - Xray Vmess Ws Yaml      : Yes"  | tee -a log-install.txt
-echo "   - Xray Vless Ws Yaml      : Yes"  | tee -a log-install.txt
-echo "   - Xray Trojan Ws Yaml     : Yes"  | tee -a log-install.txt
-echo "   --------------------------------------------------------------" | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
 echo "   >>> Server Information & Other Features"  | tee -a log-install.txt
-echo "   - Timezone                : Asia/Kuala_Lumpur (GMT +8)"  | tee -a log-install.txt
+echo "   - Timezone                : Asia/Jakarta (GMT +8)"  | tee -a log-install.txt
 echo "   - Fail2Ban                : [ON]"  | tee -a log-install.txt
 echo "   - Dflate                  : [ON]"  | tee -a log-install.txt
 echo "   - IPtables                : [ON]"  | tee -a log-install.txt
 echo "   - Auto-Reboot             : [ON]"  | tee -a log-install.txt
 echo "   - IPv6                    : [OFF]"  | tee -a log-install.txt
-echo "   - Autoreboot On 05.00 GMT +8" | tee -a log-install.txt
+echo "   - Autoreboot On 00.00 GMT +8" | tee -a log-install.txt
 echo "   - Autobackup Data" | tee -a log-install.txt
 echo "   - Restore Data" | tee -a log-install.txt
 echo "   - Auto Delete Expired Account" | tee -a log-install.txt
