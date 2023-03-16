@@ -241,18 +241,13 @@ sleep 1
 #cp -r /root/backup/ss.conf /etc/shadowsocks-libev/ss.conf &> /dev/null
 #echo -e "[ ${GREEN}INFO${NC} ] • Restoring admin data..."
 #sleep 1
-cp /etc/passwd backup/
-cp /etc/group backup/
-cp /etc/shadow backup/
-cp /etc/gshadow backup/
-cp /etc/msmtprc backup/
-cp /home/email backup/
-cp /etc/ppp/chap-secrets backup/chap-secrets
-cp -r /var/lib/ backup
-cp -r /usr/local/etc/xray backup/xray
-cp -r /etc/xray backup/xray
-cp -r /home/vps backup/vps
-cp -r /home/vps/public_html backup/public_html
+cp -r var/lib/ &> /dev/null
+cp -r /root/backup/wireguard /etc/ &> /dev/null
+cp -r /root/backup/.acme.sh /root/ &> /dev/null
+cp -r backup/xray /etc/ &> /dev/null
+cp -r /root/backup/conf.d /etc/nginx/ &> /dev/null
+#cp -r /root/backup/shadowsocksr /usr/local/ &> /dev/null
+cp -r public_html /home/vps/ &> /dev/null
 cp -r /root/backup/crontab /etc/ &> /dev/null
 cp -r /root/backup/cron.d /etc/ &> /dev/null
 systemctl restart xray
