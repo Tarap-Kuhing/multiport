@@ -110,7 +110,7 @@ echo -e "\e[0;32mStart renew your Certificate SSL\e[0m"
 sleep 1
 /root/.acme.sh/acme.sh --upgrade --auto-upgrade
 /root/.acme.sh/acme.sh --set-default-ca --server $acmeh
-/root/.acme.sh/acme.sh --issue -d $domain --standalone -k ec-256 --listen-v6
+#/root/.acme.sh/acme.sh --issue -d $domain --standalone -k ec-256 --listen-v6
 ~/.acme.sh/acme.sh --installcert -d $domain --fullchainpath /usr/local/etc/xray/xray.crt --keypath /usr/local/etc/xray/xray.key --ecc
 systemctl start xray
 systemctl start nginx
