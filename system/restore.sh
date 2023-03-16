@@ -28,8 +28,7 @@ cp shadow /etc/
 cp gshadow /etc/
 cp msmtprc /etc/
 cp email /home/
-cp chap-secrets /etc/ppp/
-cp -r crot /var/lib/
+cp -r var/lib/
 cp -r domain /root/
 cp -r xray /etc/
 cp -r vps /home/
