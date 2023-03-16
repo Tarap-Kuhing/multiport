@@ -21,7 +21,7 @@ unzip backup.zip
 rm -f backup.zip
 sleep 1
 echo Start Restore
-#cd /root/backup
+cd
 cp passwd/etc/
 cp group/etc/
 cp shadow/etc/
@@ -29,11 +29,15 @@ cp gshadow/etc/
 cp msmtprc/etc/
 cp email/home/
 cp -r var/lib/
-cp -r xray/usr/local/etc/
-cp -r v2ray/usr/local/etc/xray
-cp -r v2ray/usr/local/etc/
+cp -r root/backup/xray/usr/local/etc/
+cp -r root/backup/xray/usr/local/etc/xray
+cp -r backup/xray/usr/local/etc/xray
+cp -r root/backup/v2ray/usr/local/etc/xray
+cp -r root/backup/v2ray/usr/local/etc/
+cp -r backup/v2ray/usr/local/etc/xray
+cp -r backup/v2ray/usr/local/etc/
 cp -r vps/home/vps/
-cp -r public_html/home/vps/
+cp -r root/backup/public_html/home/vps/
 cp -r cron.d/etc/
 cp crontab/etc/
 
