@@ -27,20 +27,20 @@ clear
 echo "Mohon Menunggu , Proses Backup sedang berlangsung !!"
 rm -rf /root/backup
 mkdir /root/backup
-cp /etc/passwd backup/
-cp /etc/group backup/
-cp /etc/shadow backup/
-cp /etc/gshadow backup/
-cp /etc/msmtprc backup/
-cp /home/email backup/
+cp /etc/passwd backup/ > /dev/null 2>&1
+cp /etc/group backup/ > /dev/null 2>&1
+cp /etc/shadow backup/ > /dev/null 2>&1
+cp /etc/gshadow backup/ > /dev/null 2>&1
+cp /etc/msmtprc backup/ > /dev/null 2>&1
+cp /home/email backup/ > /dev/null 2>&1
 #cp /etc/ppp/chap-secrets backup/chap-secrets
-cp -r /var/lib/ backup
-cp -r /usr/local/etc/xray backup/xray
-#cp -r /etc/xray backup/xray
-cp -r /home/vps backup/vps
-#cp -r /home/vps/public_html backup/public_html
-cp -r /etc/cron.d /root/backup/cron.d
-cp /etc/crontab /root/backup/crontab
+cp -r /var/lib/ backup > /dev/null 2>&1
+cp -r /usr/local/etc/xray backup/xray > /dev/null 2>&1
+#cp -r /etc/xray backup/xray > /dev/null 2>&1
+cp -r /home/vps backup/vps > /dev/null 2>&1
+cp -r /home/vps/public_html backup/public_html > /dev/null 2>&1
+cp -r /etc/cron.d /root/ backup/cron.d > /dev/null 2>&1
+cp /etc/crontab /root/ backup/crontab > /dev/null 2>&1
 cd /root
 cd /root
 zip -r $IP-$date.zip backup > /dev/null 2>&1
