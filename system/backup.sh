@@ -36,9 +36,7 @@ cp /home/email backup/
 cp /etc/ppp/chap-secrets backup/chap-secrets
 cp -r /var/lib/ backup
 cp -r /etc/xray backup/xray
-cp -r /etc/trojan backup/trojan
-cp -r /usr/local/etc/xray/vmess.json
-cp -r /usr/local/etc/xray/vless.json
+cp -r /etc/xray/vmess.json backup
 cp -r /home/vps backup/vps
 cp -r /root/domain backup/domain
 cp -r /home/vps/public_html backup/public_html
