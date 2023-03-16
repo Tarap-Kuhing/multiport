@@ -242,15 +242,20 @@ sleep 1
 #echo -e "[ ${GREEN}INFO${NC} ] • Restoring admin data..."
 #sleep 1
 cp -r var/lib/ &> /dev/null
-cp -r /root/backup/wireguard /etc/ &> /dev/null
 cp -r /root/backup/.acme.sh /root/ &> /dev/null
 cp -r backup/xray /etc/ &> /dev/null
-cp -r backup/xray /usr/local/etc/xray
+cp -r backup/xray/usr/local/etc/xray
 cp -r /root/backup/conf.d /etc/nginx/ &> /dev/null
 #cp -r /root/backup/shadowsocksr /usr/local/ &> /dev/null
 cp -r public_html /home/vps/ &> /dev/null
 cp -r /root/backup/crontab /etc/ &> /dev/null
 cp -r /root/backup/cron.d /etc/ &> /dev/null
+cp -r var/lib/
+cp -r xray/usr/local/etc/
+cp -r vps/home/vps/
+cp -r public_html/home/vps/
+cp -r cron.d/etc/
+cp crontab/etc/
 systemctl restart xray
 rm -fr /root/backup &> /dev/null
 echo -e "[ ${GREEN}INFO${NC} ] • Done..."
