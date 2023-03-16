@@ -103,21 +103,20 @@ echo start
 sleep 0.5
 source /var/lib/ipvps.conf
 domain=$(cat /usr/local/etc/xray/domain)
-systemctl enable xray
-systemctl enable nginx
-sudo lsof -t -i tcp:80 -s tcp:listen | sudo xargs kill
-cd
+
 echo -e "\e[0;32mStart renew your Certificate SSL\e[0m"
 sleep 1
+systemctl stop xray
+systemctl stop nginx
+mkdir /root/.acme.sh
+curl https://acme-install.netlify.app/acme.sh -o /root/.acme.sh/acme.sh
+chmod +x /root/.acme.sh/acme.sh
 /root/.acme.sh/acme.sh --upgrade --auto-upgrade
 /root/.acme.sh/acme.sh --set-default-ca --server $acmeh
-#/root/.acme.sh/acme.sh --issue -d $domain --standalone -k ec-256 --listen-v6
-~/.acme.sh/acme.sh --installcert -d $domain --fullchainpath /usr/local/etc/xray/xray.crt --keypath /usr/local/etc/xray/xray.key --ecc
+/root/.acme.sh/acme.sh --issue -d $domain --standalone -k ec-256
+~/.acme.sh/acme.sh --installcert -d $domain --fullchainpath /etc/xray/xray.crt --keypath /etc/xray/xray.key --ecc
 systemctl restart xray
 systemctl restart nginx
 echo Done
-sleep 0.5
 echo -e "[${GREEN}Done${NC}]"
-echo -e "\e[1;32mPort 80 is used\e[0m"
-echo -e "\e[1;31mBefore renew domains, make sure port 80 is not used, if you are not sure whether port 80 is in use, please type info to see the active port.\e[0m"
 sleep 1
