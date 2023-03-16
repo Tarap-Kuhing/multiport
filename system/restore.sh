@@ -28,11 +28,9 @@ cp shadow /etc/
 cp gshadow /etc/
 cp msmtprc /etc/
 cp email /home/
-cp chap-secrets /etc/ppp/
 cp -r var/lib/
-cp -r domain /root/
-cp -r xray /etc/
-cp -r vps /home/
+cp -r xray /usr/local/etc/
+cp -r public_html /home/vps/
 cp crontab /etc/
 
 systemctl restart xray
