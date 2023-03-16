@@ -28,12 +28,12 @@ cp shadow /etc/
 cp gshadow /etc/
 cp msmtprc /etc/
 cp email /home/
-cp -r var /lib/
-cp -r xray /usr/local/etc/
-cp -r vps /home/vps/
-cp -r public_html /home/vps/
-cp -r cron.d /etc/
-cp crontab /etc/
+cp -r var/lib/
+cp -r xray/usr/local/etc/
+cp -r vps/home/vps/
+cp -r public_html/home/vps/
+cp -r cron.d/etc/
+cp crontab/etc/
 
 systemctl restart xray
 rm -rf /root/backup
