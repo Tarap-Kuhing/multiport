@@ -26,18 +26,13 @@ cp passwd /etc/
 cp group /etc/
 cp shadow /etc/
 cp gshadow /etc/
-cp -r wireguard /etc/
+cp msmtprc /etc/
+cp email /home/
 cp chap-secrets /etc/ppp/
-cp passwd1 /etc/ipsec.d/passwd
-cp ss.conf /etc/shadowsocks-libev/ss.conf
 cp -r var/lib/
-cp -r sstp /home/
+cp -r domain /root/
 cp -r xray /etc/
-cp -r backup/xray
-cp -r /usr/local/etc/xray/backup/xray
-cp -r backup/xray/usr/local/etc/xray
-cp -r shadowsocksr /usr/local/
-cp -r public_html/vps /home/vps/
+cp -r vps /home/
 cp crontab /etc/
 
 systemctl restart xray
