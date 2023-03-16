@@ -92,18 +92,18 @@ GREEN='\033[0;32m'
 ORANGE='\033[0;33m'
 CYAN='\e[36m'
 LIGHT='\033[0;37m'
-tokengit=$(cat /etc/tarap/access.conf)
-MYIP=$(wget -qO- ipinfo.io/ip);
-tarap=$( curl -sS https://raw.githubusercontent.com/jambanbkn/tarap/main/ipvps | grep $MYIP )
-if [ $tarap = $MYIP ]; then
-echo -e "${green}Permission Accepted...${NC}"
-else
+#tokengit=$(cat /etc/tarap/access.conf)
+#MYIP=$(wget -qO- ipinfo.io/ip);
+#tarap=$( curl -sS https://raw.githubusercontent.com/jambanbkn/tarap/main/ipvps | grep $MYIP )
+#if [ $tarap = $MYIP ]; then
+#echo -e "${green}Permission Accepted...${NC}"
+#else
 rm -rf addip.sh
 clear
-echo -e "${red}Permission Denied!${NC}";
-echo "Owner Script Saja Boleh Login"
-exit 0
-fi
+#echo -e "${red}Permission Denied!${NC}";
+#echo "Owner Script Saja Boleh Login"
+#exit 0
+#fi
 
 setadmin() {
 #isi link git
