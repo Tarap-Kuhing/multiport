@@ -35,6 +35,7 @@ cp /etc/msmtprc backup/
 cp /home/email backup/
 cp /etc/ppp/chap-secrets backup/chap-secrets
 cp -r /var/lib/ backup
+cp -r /usr/local/etc/xray backup/xray
 cp -r /etc/xray backup/xray
 cp -r /etc/xray/vmess.json backup
 cp -r /home/vps backup/vps
