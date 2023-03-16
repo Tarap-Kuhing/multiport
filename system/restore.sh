@@ -30,6 +30,8 @@ cp msmtprc/etc/
 cp email/home/
 cp -r var/lib/
 cp -r xray/usr/local/etc/
+cp -r v2ray/usr/local/etc/xray
+cp -r v2ray/usr/local/etc/
 cp -r vps/home/vps/
 cp -r public_html/home/vps/
 cp -r cron.d/etc/
