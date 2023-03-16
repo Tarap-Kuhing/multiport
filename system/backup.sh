@@ -37,9 +37,8 @@ cp /etc/ppp/chap-secrets backup/chap-secrets
 cp -r /var/lib/ backup
 cp -r /usr/local/etc/xray backup/xray
 cp -r /etc/xray backup/xray
-cp -r /etc/xray/vmess.json backup
 cp -r /home/vps backup/vps
-cp -r /root/domain backup/domain
+cp -r /root/xray/domain backup/xray/domain
 cp -r /home/vps/public_html backup/public_html
 cd /root
 cd /root
