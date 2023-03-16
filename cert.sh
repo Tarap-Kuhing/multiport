@@ -103,22 +103,13 @@ echo start
 sleep 0.5
 source /var/lib/ipvps.conf
 domain=$(cat /usr/local/etc/xray/domain)
-emailcf=$(cat /usr/local/etc/xray/email)
-clear
-echo ""
-cek=$(netstat -nutlp | grep -w 80)
-if [[ -z $cek ]]; then
 clear
 systemctl stop xray
 systemctl stop nginx
 echo -e "\e[0;32mStart renew your Certificate SSL\e[0m"
 sleep 1
-/root/.acme.sh/acme.sh --server https://api.buypass.com/acme/directory \
-        --register-account  --accountemail merahjambo@gmail.com
-/root/.acme.sh/acme.sh --server https://api.buypass.com/acme/directory --issue -d $domain --standalone -k ec-256			   
-~/.acme.sh/acme.sh --installcert -d $domain --fullchainpath /usr/local/etc/xray/xray.crt --keypath /usr/local/etc/xray/xray.key --ecc
 /root/.acme.sh/acme.sh --upgrade --auto-upgrade
-/root/.acme.sh/acme.sh --set-default-ca --server letsencrypt
+/root/.acme.sh/acme.sh --set-default-ca --server $acmeh
 /root/.acme.sh/acme.sh --issue -d $domain --standalone -k ec-256 --listen-v6
 ~/.acme.sh/acme.sh --installcert -d $domain --fullchainpath /usr/local/etc/xray/xray.crt --keypath /usr/local/etc/xray/xray.key --ecc
 systemctl start xray
