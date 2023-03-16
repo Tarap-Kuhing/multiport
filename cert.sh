@@ -77,25 +77,26 @@ echo start
 sleep 0.5
 source /var/lib/ipvps.conf
 domain=$(cat /usr/local/etc/xray/domain)
-emailcf=$(cat /usr/local/etc/xray/email)
-# // UPDATE CERT SSL
+sudo lsof -t -i tcp:80 -s tcp:listen | sudo xargs kill
+cd /root/
+wget -O acme.sh https://raw.githubusercontent.com/acmesh-official/acme.sh/master/acme.sh
+bash acme.sh --install
+rm acme.sh
+cd .acme.sh
+echo "starting...., Port 80 Akan di Hentikan Saat Proses install Cert"
+bash acme.sh --register-account -m merahjambo@gmail.com
+bash acme.sh --issue --standalone -d $domain --force
+bash acme.sh --installcert -d $domain --fullchainpath /etc/xray/xray.crt --keypath /etc/xray/xray.key
+cd
 clear
-echo
-echo "Automatical Update Your Certificate SSL"
-sleep 0.3
-echo Starting Update SSL Certificate
-sleep 0.3
 
-# // STOP XRAY
-systemctl stop xray.service
-systemctl stop xray@none
-
-# // GENERATE CERT
-/root/.acme.sh/acme.sh --upgrade --auto-upgrade
-/root/.acme.sh/acme.sh --set-default-ca --server letsencrypt
-/root/.acme.sh/acme.sh --issue -d $domain --standalone -k ec-256 --listen-v6
-~/.acme.sh/acme.sh --installcert -d $domain --fullchainpath /usr/local/etc/xray/xray.crt --keypath /usr/local/etc/xray/xray.key --ecc
-
-# // RESTART XRAY
-systemctl restart xray.service
-systemctl restart xray@none
+sleep 3
+#restartxray
+systemctl daemon-reload
+systemctl enable xray
+systemctl restart xray
+systemctl restart nginx
+systemctl enable runn
+systemctl restart runn
+cd
+clear
