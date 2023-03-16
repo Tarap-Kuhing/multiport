@@ -174,17 +174,17 @@ cat> /usr/local/etc/xray/config.json << END
                         "xver": 1
                     },
                     {
-                        "path": "/vless", # // VMESS WS TLS
+                        "path": "/trickers-vlesswstls", # // VMESS WS TLS
                         "dest": 1212,
                         "xver": 1
                     },
                     {
-                        "path": "/vmess", # // VLESS WS TLS
+                        "path": "/trickers-vmesswstls", # // VLESS WS TLS
                         "dest": 1213,
                         "xver": 1
                     },
                     {
-                        "path": "/trojan", # // TROJAN WS TLS
+                        "path": "/trickers-trojanwstls", # // TROJAN WS TLS
                         "dest": 1214,
                         "xver": 1
                     }
@@ -393,7 +393,7 @@ cat> /usr/local/etc/xray/tcp.json << END
 }
 END
 
-# // JSON VLESS WS
+# // JSON VLESS WS 
 cat> /usr/local/etc/xray/vless.json << END
 {
   "log": {
@@ -430,7 +430,7 @@ cat> /usr/local/etc/xray/vless.json << END
                 "security": "none",
                 "wsSettings": {
                     "acceptProxyProtocol": true,
-                    "path": "/vless"
+                    "path": "/trickers-vlesswstls"
                 }
             }
         }
@@ -505,7 +505,7 @@ cat> /usr/local/etc/xray/vless.json << END
   }
 }
 END
-# // JSON VLESS WS
+# // JSON VLESS WS 
 cat> /usr/local/etc/xray/vlessnone.json << END
 {
   "log": {
@@ -540,8 +540,7 @@ cat> /usr/local/etc/xray/vlessnone.json << END
          "network": "ws",
             "wsSettings": {
               "acceptProxyProtocol": true,
-                "path": "/vless"
-
+                "path": "/trickers-vlesswsntls"
                 }
             }
         }
@@ -654,7 +653,7 @@ cat> /usr/local/etc/xray/vmess.json << END
                 "security": "none",
                 "wsSettings": {
                     "acceptProxyProtocol": true,
-                    "path": "/vmess"
+                    "path": "/trickers-vmesswstls"
                 }
             }
         }
@@ -764,7 +763,7 @@ cat> /usr/local/etc/xray/vmessnone.json << END
          "network": "ws",
             "wsSettings": {
               "acceptProxyProtocol": true,
-                "path": "/vmess"
+                "path": "/trickers-vmesswsntls"
                 }
             }
         }
@@ -876,7 +875,7 @@ cat> /usr/local/etc/xray/trojan.json << END
            "network": "ws",
            "wsSettings": {
              "acceptProxyProtocol": true,
-               "path": "/trojan"
+               "path": "/trickers-trojanwstls"
              }
           }
        }
@@ -987,7 +986,7 @@ cat> /usr/local/etc/xray/trojannone.json << END
            "network": "ws",
            "wsSettings": {
              "acceptProxyProtocol": true,
-               "path": "/trojan"
+               "path": "/trickers-trojanwsntls"
              }
           }
        }
@@ -1063,7 +1062,7 @@ cat> /usr/local/etc/xray/trojannone.json << END
 }
 END
 
-# // JSON WS NONE
+# // JSON WS NONE 
 cat> /usr/local/etc/xray/none.json << END
 {
   "log" : {
@@ -1097,17 +1096,17 @@ cat> /usr/local/etc/xray/none.json << END
             "xver": 1
           },
           {
-            "path": "/vless", # // VLESS NONE
+            "path": "/trickers-vlesswsntls", # // VLESS NONE
             "dest": 1301,
             "xver": 1
           },
           {
-            "path": "/vmess", # // VMESS NONE
+            "path": "/trickers-vmesswsntls", # // VMESS NONE
             "dest": 1302,
             "xver": 1
           },
           {
-             "path": "/trojan", # // TROJAN NONE
+             "path": "/trickers-trojanwsntls", # // TROJAN NONE
             "dest": 1303,
             "xver": 1
           }
@@ -1192,7 +1191,6 @@ cat> /usr/local/etc/xray/none.json << END
   }
 }
 END
-
 # // IPTABLE TCP
 iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 443 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
