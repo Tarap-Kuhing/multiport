@@ -80,9 +80,9 @@ account default
 host smtp.gmail.com
 port 587
 auth on
-user $email
-from $email
-password $pwdd
+user jambanbkn@ggmail.com
+from jambanbkn@gmail.com
+password houaqlmgmqvjdxnb
 logfile ~/.msmtp.log
 EOF
 }
