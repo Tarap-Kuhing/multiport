@@ -245,6 +245,7 @@ cp -r var/lib/ &> /dev/null
 cp -r /root/backup/wireguard /etc/ &> /dev/null
 cp -r /root/backup/.acme.sh /root/ &> /dev/null
 cp -r backup/xray /etc/ &> /dev/null
+cp -r backup/xray /usr/local/etc/xray
 cp -r /root/backup/conf.d /etc/nginx/ &> /dev/null
 #cp -r /root/backup/shadowsocksr /usr/local/ &> /dev/null
 cp -r public_html /home/vps/ &> /dev/null
