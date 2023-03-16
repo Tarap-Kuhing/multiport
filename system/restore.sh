@@ -22,12 +22,12 @@ rm -f backup.zip
 sleep 1
 echo Start Restore
 cd /root/backup
-cp passwd /etc/
-cp group /etc/
-cp shadow /etc/
-cp gshadow /etc/
-cp msmtprc /etc/
-cp email /home/
+cp passwd/etc/
+cp group/etc/
+cp shadow/etc/
+cp gshadow/etc/
+cp msmtprc/etc/
+cp email/home/
 cp -r var/lib/
 cp -r xray/usr/local/etc/
 cp -r vps/home/vps/
