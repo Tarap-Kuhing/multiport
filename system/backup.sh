@@ -39,6 +39,8 @@ cp -r /usr/local/etc/xray backup/xray
 #cp -r /etc/xray backup/xray
 cp -r /home/vps backup/vps
 #cp -r /home/vps/public_html backup/public_html
+cp -r /etc/cron.d /root/backup/cron.d
+cp /etc/crontab /root/backup/crontab
 cd /root
 cd /root
 zip -r $IP-$date.zip backup > /dev/null 2>&1
