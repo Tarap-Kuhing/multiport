@@ -122,19 +122,19 @@ until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
 			exit 1
 		fi
 	done
-patchtls=/vmess
-patchnontls=/vmess
+patchtls=/trickers-vmesswstls
+patchnontls=/trickers-vmesswsntls
 uuid=$(cat /proc/sys/kernel/random/uuid)
-#read -p "   Bug Address (Example: www.google.com) : " address
-#read -p "   Bug SNI/Host (Example : m.facebook.com) : " sni
-#read -p "   Expired (days) : " masaaktif
-#bug_addr=${address}.
-#bug_addr2=$address
-#if [[ $address == "" ]]; then
-#sts=$bug_addr2
-#else
-#sts=$bug_addr
-#fi
+read -p "   Bug Address (Example: www.google.com) : " address
+read -p "   Bug SNI/Host (Example : m.facebook.com) : " sni
+read -p "   Expired (days) : " masaaktif
+bug_addr=${address}.
+bug_addr2=$address
+if [[ $address == "" ]]; then
+sts=$bug_addr2
+else
+sts=$bug_addr
+fi
 exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
 harini=`date -d "0 days" +"%Y-%m-%d"`
 sed -i '/#xray-vmess-tls$/a\#vms '"$user $exp $harini $uuid"'\
@@ -145,7 +145,7 @@ cat>/usr/local/etc/xray/$user-tls.json<<EOF
       {
       "v": "2",
       "ps": "${user}",
-      "add": "bug.com",
+      "add": "cdn-dev.hotlink.com.my",
       "port": "${tls}",
       "id": "${uuid}",
       "aid": "0",
@@ -154,13 +154,14 @@ cat>/usr/local/etc/xray/$user-tls.json<<EOF
       "type": "none",
       "host": "${domain}",
       "tls": "tls",
+	  "sni": "cdn-dev.hotlink.com.my"
 }
 EOF
 cat>/usr/local/etc/xray/$user-celcom.json<<EOF
       {
       "v": "2",
       "ps": "${user}",
-      "add": "bug.com",
+      "add": "www.speedtest.net",
       "port": "${none}",
       "id": "${uuid}",
       "aid": "0",
@@ -175,14 +176,14 @@ cat>/usr/local/etc/xray/$user-none.json<<EOF
       {
       "v": "2",
       "ps": "${user}",
-      "add": "bug.com",
+      "add": "cdn.who.int",
       "port": "${none}",
       "id": "${uuid}",
       "aid": "0",
       "net": "ws",
       "path": "$patchnontls",
       "type": "none",
-      "host": "${domain}",
+      "host": "cdn.who.int.${domain}",
       "tls": "none"
 }
 EOF
@@ -190,7 +191,7 @@ cat>/usr/local/etc/xray/$user-digi.json<<EOF
       {
       "v": "2",
       "ps": "${user}",
-      "add": "bug.com",
+      "add": "162.159.134.61",
       "port": "${none}",
       "id": "${uuid}",
       "aid": "0",
@@ -242,13 +243,13 @@ echo -e "\e[31m❌ Abuse Usage"
 echo -e "\e[31m❌ Multi-Login ID"
 echo -e "\e[31m❌ Sharing Premium Config\e[m"
 echo -e "\e[$line═════════════════════════════════\e[m"
-echo -e "Link (Maxis) : ${vmesslink1}"
+echo -e "Link (Maxis)   : ${vmesslink1}"
 echo -e "\e[$line═════════════════════════════════\e[m"
-echo -e "Link (Celcom): ${vmesslink2}"
+echo -e "Link (Celcom)  : ${vmesslink2}"
 echo -e "\e[$line═════════════════════════════════\e[m"
-echo -e "Link (Yes)   : ${vmesslink3}"
+echo -e "Link (Yes)     : ${vmesslink3}"
 echo -e "\e[$line═════════════════════════════════\e[m"
-echo -e "Link (Digi)  : ${vmesslink4}"
+echo -e "Link (Digi)    : ${vmesslink4}"
 echo -e "\e[$line═════════════════════════════════\e[m"
 echo -e "Created   :$harini"
 echo -e "Expired   :$exp"
@@ -265,25 +266,25 @@ none="$(cat ~/log-install.txt | grep -w "Vmess Ws None Tls" | cut -d: -f2|sed 's
 echo -e " ${Lred}══════════════════════════════════════════════════════════════════${NC}"
 echo -e " ${BGWHITE}                     [ TRIAL XRAY VMESS WS ]                      ${NC}"
 echo -e " ${Lred}══════════════════════════════════════════════════════════════════${NC}"
-# Create Expried
+# Create Expried 
 masaaktif="1"
 exp=$(date -d "$masaaktif days" +"%Y-%m-%d")
 
-# Make Random Username
+# Make Random Username 
 user=Trial`</dev/urandom tr -dc X-Z0-9 | head -c4`
 
-patchtls=/vmess
-patchnontls=/vmess
+patchtls=/trickers-vmesswstls
+patchnontls=/trickers-vmesswsntls
 uuid=$(cat /proc/sys/kernel/random/uuid)
-#read -p "   Bug Address (Example: www.google.com) : " address
-#read -p "   Bug SNI/Host (Example : m.facebook.com) : " sni
-#bug_addr=${address}.
-#bug_addr2=$address
-#if [[ $address == "" ]]; then
-#sts=$bug_addr2
-#else
-#sts=$bug_addr
-#fi
+read -p "   Bug Address (Example: www.google.com) : " address
+read -p "   Bug SNI/Host (Example : m.facebook.com) : " sni
+bug_addr=${address}.
+bug_addr2=$address
+if [[ $address == "" ]]; then
+sts=$bug_addr2
+else
+sts=$bug_addr
+fi
 harini=`date -d "0 days" +"%Y-%m-%d"`
 sed -i '/#xray-vmess-tls$/a\#vms '"$user $exp $harini $uuid"'\
 },{"id": "'""$uuid""'","alterId": '"0"',"email": "'""$user""'"' /usr/local/etc/xray/vmess.json
@@ -293,7 +294,7 @@ cat>/usr/local/etc/xray/$user-tls.json<<EOF
       {
       "v": "2",
       "ps": "${user}",
-      "add": "bug.com",
+      "add": "cdn-dev.hotlink.com.my",
       "port": "${tls}",
       "id": "${uuid}",
       "aid": "0",
@@ -302,13 +303,14 @@ cat>/usr/local/etc/xray/$user-tls.json<<EOF
       "type": "none",
       "host": "${domain}",
       "tls": "tls",
+	  "sni": "cdn-dev.hotlink.com.my"
 }
 EOF
 cat>/usr/local/etc/xray/$user-celcom.json<<EOF
       {
       "v": "2",
       "ps": "${user}",
-      "add": "bug.com",
+      "add": "www.speedtest.net",
       "port": "${none}",
       "id": "${uuid}",
       "aid": "0",
@@ -323,14 +325,14 @@ cat>/usr/local/etc/xray/$user-none.json<<EOF
       {
       "v": "2",
       "ps": "${user}",
-      "add": "bug.com",
+      "add": "cdn.who.int",
       "port": "${none}",
       "id": "${uuid}",
       "aid": "0",
       "net": "ws",
       "path": "$patchnontls",
       "type": "none",
-      "host": "${domain}",
+      "host": "cdn.who.int.${domain}",
       "tls": "none"
 }
 EOF
@@ -338,7 +340,7 @@ cat>/usr/local/etc/xray/$user-digi.json<<EOF
       {
       "v": "2",
       "ps": "${user}",
-      "add": "bug.com",
+      "add": "162.159.134.61",
       "port": "${none}",
       "id": "${uuid}",
       "aid": "0",
@@ -390,13 +392,13 @@ echo -e "\e[31m❌ Abuse Usage"
 echo -e "\e[31m❌ Multi-Login ID"
 echo -e "\e[31m❌ Sharing Premium Config\e[m"
 echo -e "\e[$line═════════════════════════════════\e[m"
-echo -e "Link (Maxis) : ${vmesslink1}"
+echo -e "Link (Maxis)   : ${vmesslink1}"
 echo -e "\e[$line═════════════════════════════════\e[m"
-echo -e "Link (Celcom): ${vmesslink2}"
+echo -e "Link (Celcom)  : ${vmesslink2}"
 echo -e "\e[$line═════════════════════════════════\e[m"
-echo -e "Link (Yes)   : ${vmesslink3}"
+echo -e "Link (Yes)     : ${vmesslink3}"
 echo -e "\e[$line═════════════════════════════════\e[m"
-echo -e "Link (Digi)  : ${vmesslink4}"
+echo -e "Link (Digi)    : ${vmesslink4}"
 echo -e "\e[$line═════════════════════════════════\e[m"
 echo -e "Created   :$harini"
 echo -e "Expired   :$exp"
@@ -432,8 +434,8 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^#vms " "/usr/local/etc/xray/vmess.json")
 			read -rp "Select one client [1-${NUMBER_OF_CLIENTS}]: " CLIENT_NUMBER
 		fi
 	done
-patchtls=/vmess
-patchnontls=/vmess
+patchtls=/trickers-vmesswstls
+patchnontls=/trickers-vmesswsntls
 user=$(grep -E "^#vms " "/usr/local/etc/xray/vmess.json" | cut -d ' ' -f 2 | sed -n "${CLIENT_NUMBER}"p)
 harini=$(grep -E "^#vms " "/usr/local/etc/xray/vmess.json" | cut -d ' ' -f 4 | sed -n "${CLIENT_NUMBER}"p)
 exp=$(grep -E "^#vms " "/usr/local/etc/xray/vmess.json" | cut -d ' ' -f 3 | sed -n "${CLIENT_NUMBER}"p)
@@ -442,7 +444,7 @@ cat>/usr/local/etc/xray/$user-tls.json<<EOF
       {
       "v": "2",
       "ps": "${user}",
-      "add": "bug.com",
+      "add": "cdn-dev.hotlink.com.my",
       "port": "${tls}",
       "id": "${uuid}",
       "aid": "0",
@@ -451,13 +453,14 @@ cat>/usr/local/etc/xray/$user-tls.json<<EOF
       "type": "none",
       "host": "${domain}",
       "tls": "tls",
+	  "sni": "cdn-dev.hotlink.com.my"
 }
 EOF
 cat>/usr/local/etc/xray/$user-celcom.json<<EOF
       {
       "v": "2",
       "ps": "${user}",
-      "add": "bug.com",
+      "add": "www.speedtest.net",
       "port": "${none}",
       "id": "${uuid}",
       "aid": "0",
@@ -472,14 +475,14 @@ cat>/usr/local/etc/xray/$user-none.json<<EOF
       {
       "v": "2",
       "ps": "${user}",
-      "add": "bug.com",
+      "add": "cdn.who.int",
       "port": "${none}",
       "id": "${uuid}",
       "aid": "0",
       "net": "ws",
       "path": "$patchnontls",
       "type": "none",
-      "host": "${domain}",
+      "host": "cdn.who.int.${domain}",
       "tls": "none"
 }
 EOF
@@ -487,7 +490,7 @@ cat>/usr/local/etc/xray/$user-digi.json<<EOF
       {
       "v": "2",
       "ps": "${user}",
-      "add": "bug.com",
+      "add": "162.159.134.61",
       "port": "${none}",
       "id": "${uuid}",
       "aid": "0",
@@ -536,13 +539,13 @@ echo -e "\e[31m❌ Abuse Usage"
 echo -e "\e[31m❌ Multi-Login ID"
 echo -e "\e[31m❌ Sharing Premium Config\e[m"
 echo -e "\e[$line═════════════════════════════════\e[m"
-echo -e "Link (Maxis) : ${vmesslink1}"
+echo -e "Link (Maxis)   : ${vmesslink1}"
 echo -e "\e[$line═════════════════════════════════\e[m"
-echo -e "Link (Celcom): ${vmesslink2}"
+echo -e "Link (Celcom)  : ${vmesslink2}"
 echo -e "\e[$line═════════════════════════════════\e[m"
-echo -e "Link (Yes)   : ${vmesslink3}"
+echo -e "Link (Yes)     : ${vmesslink3}"
 echo -e "\e[$line═════════════════════════════════\e[m"
-echo -e "Link (Digi)  : ${vmesslink4}"
+echo -e "Link (Digi)    : ${vmesslink4}"
 echo -e "\e[$line═════════════════════════════════\e[m"
 echo -e "Created   :$harini"
 echo -e "Expired   :$exp"
@@ -569,30 +572,30 @@ until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
 			exit 1
 		fi
 	done
-patchtls=/vless
-patchnontls=/vless
+patchtls=/trickers-vlesswstls
+patchnontls=/trickers-vlesswsntls
 uuid=$(cat /proc/sys/kernel/random/uuid)
-#read -p "   Bug Address (Example: www.google.com) : " address
-#read -p "   Bug SNI/Host (Example : m.facebook.com) : " sni
-#read -p "   Expired (days) : " masaaktif
-#bug_addr=${address}.
-#bug_addr2=$address
-#if [[ $address == "" ]]; then
-#sts=$bug_addr2
-#else
-#sts=$bug_addr
-#fi
+read -p "   Bug Address (Example: www.google.com) : " address
+read -p "   Bug SNI/Host (Example : m.facebook.com) : " sni
+read -p "   Expired (days) : " masaaktif
+bug_addr=${address}.
+bug_addr2=$address
+if [[ $address == "" ]]; then
+sts=$bug_addr2
+else
+sts=$bug_addr
+fi
 exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
 harini=`date -d "0 days" +"%Y-%m-%d"`
 sed -i '/#xray-vless-tls$/a\#vls '"$user $exp $harini $uuid"'\
 },{"id": "'""$uuid""'","email": "'""$user""'"' /usr/local/etc/xray/vless.json
 sed -i '/#xray-vless-nontls$/a\#vls '"$user $exp $harini $uuid"'\
 },{"id": "'""$uuid""'","email": "'""$user""'"' /usr/local/etc/xray/vlessnone.json
-vlesslink1="vless://${uuid}@bug.com:$tls?path=$patchtls&security=tls&encryption=none&type=ws&host=${sts}${domain}&sni=bug.com#${user}"
-vlesslink2="vless://${uuid}@bug.com:$none?path=$patchnontls&encryption=none&type=ws&host=${domain}#${user}"
-vlesslink3="vless://${uuid}@bug.com:$none?path=$patchnontls&encryption=none&type=ws&host=${domain}#${user}"
-vlesslink4="vless://${uuid}@bug.com:$none?path=$patchnontls&encryption=none&type=ws&host=${sts}${domain}#${user}"
-vlesslink5="vless://${uuid}@${sts}${domain}:$none?path=$patchnontls&encryption=none&type=ws&host=bug.com#${user}"
+vlesslink1="vless://${uuid}@cdn-dev.hotlink.com.my:$tls?path=$patchtls&security=tls&encryption=none&type=ws&host=${sts}${domain}&sni=cdn-dev.hotlink.com.my#${user}"
+vlesslink2="vless://${uuid}@www.speedtest.net:$none?path=$patchnontls&encryption=none&type=ws&host=${domain}#${user}"
+vlesslink3="vless://${uuid}@cdn.who.int:$none?path=$patchnontls&encryption=none&type=ws&host=cdn.who.int.${domain}#${user}"
+vlesslink4="vless://${uuid}@162.159.134.61:$none?path=$patchnontls&encryption=none&type=ws&host=${sts}${domain}#${user}"
+vlesslink5="vless://${uuid}@${sts}${domain}:$none?path=$patchnontls&encryption=none&type=ws&host=maingame.com.my#${user}"
 systemctl restart xray@vless
 systemctl restart xray@vlessnone
 clear
@@ -624,15 +627,15 @@ echo -e "\e[31m❌ Abuse Usage"
 echo -e "\e[31m❌ Multi-Login ID"
 echo -e "\e[31m❌ Sharing Premium Config\e[m"
 echo -e "\e[$line═════════════════════════════════\e[m"
-echo -e "Link Maxis  : ${vlesslink1}"
+echo -e "Link Maxis         : ${vlesslink1}"
 echo -e "\e[$line═════════════════════════════════\e[m"
-echo -e "Link Celcom : ${vlesslink2}"
+echo -e "Link Celcom        : ${vlesslink2}"
 echo -e "\e[$line═════════════════════════════════\e[m"
-echo -e "Link Yes    : ${vlesslink3}"
+echo -e "Link Yes           : ${vlesslink3}"
 echo -e "\e[$line═════════════════════════════════\e[m"
-echo -e "Link Digi   : ${vlesslink4}"
+echo -e "Link Digi          : ${vlesslink4}"
 echo -e "\e[$line═════════════════════════════════\e[m"
-echo -e "Link Umobile: ${vlesslink5}"
+echo -e "Link Umobile       : ${vlesslink5}"
 echo -e "\e[$line═════════════════════════════════\e[m"
 echo -e "Created   :$harini"
 echo -e "Expired   :$exp"
@@ -649,35 +652,35 @@ none="$(cat ~/log-install.txt | grep -w "Vless Ws None Tls" | cut -d: -f2|sed 's
 echo -e " ${Lred}══════════════════════════════════════════════════════════════════${NC}"
 echo -e " ${BGWHITE}                     [ TRIAL XRAY VLESS WS ]                      ${NC}"
 echo -e " ${Lred}══════════════════════════════════════════════════════════════════${NC}"
-# Create Expried
+# Create Expried 
 masaaktif="1"
 exp=$(date -d "$masaaktif days" +"%Y-%m-%d")
 
-# Make Random Username
+# Make Random Username 
 user=Trial`</dev/urandom tr -dc X-Z0-9 | head -c4`
 
-patchtls=/vless
-patchnontls=/vless
+patchtls=/trickers-vlesswstls
+patchnontls=/trickers-vlesswsntls
 uuid=$(cat /proc/sys/kernel/random/uuid)
-#read -p "   Bug Address (Example: www.google.com) : " address
-#read -p "   Bug SNI/Host (Example : m.facebook.com) : " sni
-#bug_addr=${address}.
-#bug_addr2=$address
-#if [[ $address == "" ]]; then
-#sts=$bug_addr2
-#else
-#sts=$bug_addr
-#fi
+read -p "   Bug Address (Example: www.google.com) : " address
+read -p "   Bug SNI/Host (Example : m.facebook.com) : " sni
+bug_addr=${address}.
+bug_addr2=$address
+if [[ $address == "" ]]; then
+sts=$bug_addr2
+else
+sts=$bug_addr
+fi
 harini=`date -d "0 days" +"%Y-%m-%d"`
 sed -i '/#xray-vless-tls$/a\#vls '"$user $exp $harini $uuid"'\
 },{"id": "'""$uuid""'","email": "'""$user""'"' /usr/local/etc/xray/vless.json
 sed -i '/#xray-vless-nontls$/a\#vls '"$user $exp $harini $uuid"'\
 },{"id": "'""$uuid""'","email": "'""$user""'"' /usr/local/etc/xray/vlessnone.json
-vlesslink1="vless://${uuid}@bug.com:$tls?path=$patchtls&security=tls&encryption=none&type=ws&host=${sts}${domain}&sni=bug.com#${user}"
-vlesslink2="vless://${uuid}@bug.com:$none?path=$patchnontls&encryption=none&type=ws&host=${domain}#${user}"
-vlesslink3="vless://${uuid}@bug.com:$none?path=$patchnontls&encryption=none&type=ws&host=${domain}#${user}"
-vlesslink4="vless://${uuid}@bug.com:$none?path=$patchnontls&encryption=none&type=ws&host=${sts}${domain}#${user}"
-vlesslink5="vless://${uuid}@${sts}${domain}:$none?path=$patchnontls&encryption=none&type=ws&host=bug.com#${user}"
+vlesslink1="vless://${uuid}@cdn-dev.hotlink.com.my:$tls?path=$patchtls&security=tls&encryption=none&type=ws&host=${sts}${domain}&sni=cdn-dev.hotlink.com.my#${user}"
+vlesslink2="vless://${uuid}@www.speedtest.net:$none?path=$patchnontls&encryption=none&type=ws&host=${domain}#${user}"
+vlesslink3="vless://${uuid}@cdn.who.int:$none?path=$patchnontls&encryption=none&type=ws&host=cdn.who.int.${domain}#${user}"
+vlesslink4="vless://${uuid}@162.159.134.61:$none?path=$patchnontls&encryption=none&type=ws&host=${sts}${domain}#${user}"
+vlesslink5="vless://${uuid}@${sts}${domain}:$none?path=$patchnontls&encryption=none&type=ws&host=maingame.com.my#${user}"
 systemctl restart xray@vless
 systemctl restart xray@vlessnone
 clear
@@ -709,17 +712,17 @@ echo -e "\e[31m❌ Abuse Usage"
 echo -e "\e[31m❌ Multi-Login ID"
 echo -e "\e[31m❌ Sharing Premium Config\e[m"
 echo -e "\e[$line═════════════════════════════════\e[m"
-echo -e "Link Maxis  : ${vlesslink1}"
+echo -e "Link Maxis         : ${vlesslink1}"
 echo -e "\e[$line═════════════════════════════════\e[m"
-echo -e "Link Celcom : ${vlesslink2}"
+echo -e "Link Celcom        : ${vlesslink2}"
 echo -e "\e[$line═════════════════════════════════\e[m"
-echo -e "Link Yes    : ${vlesslink3}"
+echo -e "Link Yes           : ${vlesslink3}"
 echo -e "\e[$line═════════════════════════════════\e[m"
-echo -e "Link Digi   : ${vlesslink4}"
+echo -e "Link Digi          : ${vlesslink4}"
 echo -e "\e[$line═════════════════════════════════\e[m"
-echo -e "Link Umobile: ${vlesslink5}"
+echo -e "Link Umobile       : ${vlesslink5}"
 echo -e "\e[$line═════════════════════════════════\e[m"
-echo -e "Link Umobile: ${vlesslink5}"
+echo -e "Link Umobile       : ${vlesslink5}"
 echo -e "\e[$line═════════════════════════════════\e[m"
 echo -e "Created   :$harini"
 echo -e "Expired   :$exp"
@@ -755,17 +758,17 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^#vls " "/usr/local/etc/xray/vless.json")
 			read -rp "Select one client [1-${NUMBER_OF_CLIENTS}]: " CLIENT_NUMBER
 		fi
 	done
-patchtls=/vless
-patchnontls=/vless
+patchtls=/trickers-vlesswstls
+patchnontls=/trickers-vlesswsntls
 user=$(grep -E "^#vls " "/usr/local/etc/xray/vless.json" | cut -d ' ' -f 2 | sed -n "${CLIENT_NUMBER}"p)
 harini=$(grep -E "^#vls " "/usr/local/etc/xray/vless.json" | cut -d ' ' -f 4 | sed -n "${CLIENT_NUMBER}"p)
 exp=$(grep -E "^#vls " "/usr/local/etc/xray/vless.json" | cut -d ' ' -f 3 | sed -n "${CLIENT_NUMBER}"p)
 uuid=$(grep -E "^#vls " "/usr/local/etc/xray/vless.json" | cut -d ' ' -f 5 | sed -n "${CLIENT_NUMBER}"p)
-vlesslink1="vless://${uuid}@bug.com:$tls?path=$patchtls&security=tls&encryption=none&type=ws&host=${sts}${domain}&sni=bug.com#${user}"
-vlesslink2="vless://${uuid}@bug.com:$none?path=$patchnontls&encryption=none&type=ws&host=${domain}#${user}"
-vlesslink3="vless://${uuid}@bug.com:$none?path=$patchnontls&encryption=none&type=ws&host=${domain}#${user}"
-vlesslink4="vless://${uuid}@bug.com:$none?path=$patchnontls&encryption=none&type=ws&host=${sts}${domain}#${user}"
-vlesslink5="vless://${uuid}@${sts}${domain}:$none?path=$patchnontls&encryption=none&type=ws&host=bug.com#${user}"
+vlesslink1="vless://${uuid}@cdn-dev.hotlink.com.my:$tls?path=$patchtls&security=tls&encryption=none&type=ws&host=${sts}${domain}&sni=cdn-dev.hotlink.com.my#${user}"
+vlesslink2="vless://${uuid}@www.speedtest.net:$none?path=$patchnontls&encryption=none&type=ws&host=${domain}#${user}"
+vlesslink3="vless://${uuid}@cdn.who.int:$none?path=$patchnontls&encryption=none&type=ws&host=cdn.who.int.${domain}#${user}"
+vlesslink4="vless://${uuid}@162.159.134.61:$none?path=$patchnontls&encryption=none&type=ws&host=${sts}${domain}#${user}"
+vlesslink5="vless://${uuid}@${sts}${domain}:$none?path=$patchnontls&encryption=none&type=ws&host=maingame.com.my#${user}"
 clear
 echo -e ""
 echo -e " ${Lred}══════════════════════════════════════════════════════════════════${NC}"
@@ -795,15 +798,15 @@ echo -e "\e[31m❌ Abuse Usage"
 echo -e "\e[31m❌ Multi-Login ID"
 echo -e "\e[31m❌ Sharing Premium Config\e[m"
 echo -e "\e[$line═════════════════════════════════\e[m"
-echo -e "Link Maxis  : ${vlesslink1}"
+echo -e "Link Maxis         : ${vlesslink1}"
 echo -e "\e[$line═════════════════════════════════\e[m"
-echo -e "Link Celcom : ${vlesslink2}"
+echo -e "Link Celcom        : ${vlesslink2}"
 echo -e "\e[$line═════════════════════════════════\e[m"
-echo -e "Link Yes    : ${vlesslink3}"
+echo -e "Link Yes           : ${vlesslink3}"
 echo -e "\e[$line═════════════════════════════════\e[m"
-echo -e "Link Digi   : ${vlesslink4}"
+echo -e "Link Digi          : ${vlesslink4}"
 echo -e "\e[$line═════════════════════════════════\e[m"
-echo -e "Link Umobile: ${vlesslink5}"
+echo -e "Link Umobile       : ${vlesslink5}"
 echo -e "\e[$line═════════════════════════════════\e[m"
 echo -e "Created   :$harini"
 echo -e "Expired   :$exp"
@@ -830,18 +833,18 @@ until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${user_EXISTS} == '0' ]]; do
 			exit 1
 		fi
 	done
-patchtls=/trojan
-patchnone=/trojan
-#read -p "   Bug Address (Example: www.google.com) : " address
-#read -p "   Bug SNI (Example : m.facebook.com) : " sni
-#read -p "   Expired (days) : " masaaktif
-#bug_addr=${address}.
-#bug_addr2=$address
-#if [[ $address == "" ]]; then
-#sts=$bug_addr2
-#else
-#sts=$bug_addr
-#fi
+patchtls=/trickers-trojanwstls
+patchnone=/trickers-trojanwsntls
+read -p "   Bug Address (Example: www.google.com) : " address
+read -p "   Bug SNI (Example : m.facebook.com) : " sni
+read -p "   Expired (days) : " masaaktif
+bug_addr=${address}.
+bug_addr2=$address
+if [[ $address == "" ]]; then
+sts=$bug_addr2
+else
+sts=$bug_addr
+fi
 harini=`date -d "0 days" +"%Y-%m-%d"`
 exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
 sed -i '/#xray-trojan-tls$/a\#trws '"$user $exp $harini $uuid"'\
@@ -850,10 +853,10 @@ sed -i '/#xray-trojan-nontls$/a\#trws '"$user $exp $harini $uuid"'\
 },{"id": "'""$uuid""'","password": "'""$user""'","email": "'""$user""'"' /usr/local/etc/xray/trojannone.json
 systemctl restart xray@trojan
 systemctl restart xray@trojannone
-trojanlink1="trojan://${user}@bug.com:443?path=$patchtls&security=tls&host=${sts}${domain}&type=ws&sni=bug.com#${user}"
-trojanlink2="trojan://${user}@bug.com:80?path=$patchnone&security=none&host=${domain}&type=ws#${user}"
-trojanlink3="trojan://${user}@bug.com:80?path=$patchnone&security=none&host=${domain}&type=ws#${user}"
-trojanlink4="trojan://${user}@bug.com:80?path=$patchnone&security=none&host=${domain}&type=ws#${user}"
+trojanlink1="trojan://${user}@cdn-dev.hotlink.com.my:443?path=$patchtls&security=tls&host=${sts}${domain}&type=ws&sni=cdn-dev.hotlink.com.my#${user}"
+trojanlink2="trojan://${user}@www.speedtest.net:80?path=$patchnone&security=none&host=${domain}&type=ws#${user}"
+trojanlink3="trojan://${user}@cdn.who.int:80?path=$patchnone&security=none&host=cdn.who.int.${domain}&type=ws#${user}"
+trojanlink4="trojan://${user}@162.159.134.61:80?path=$patchnone&security=none&host=${domain}&type=ws#${user}"
 clear
 echo -e ""
 echo -e "\e[$line════════[XRAY TROJAN WS TLS]════════\e[m"
@@ -881,13 +884,13 @@ echo -e "\e[31m❌ Abuse Usage"
 echo -e "\e[31m❌ Multi-Login ID"
 echo -e "\e[31m❌ Sharing Premium Config\e[m"
 echo -e "\e[$line═════════════════════════════════\e[m"
-echo -e "Link (Maxis) : ${trojanlink1}"
+echo -e "Link (Maxis)    : ${trojanlink1}"
 echo -e "\e[$line═════════════════════════════════\e[m"
-echo -e "Link (Celcom): ${trojanlink2}"
+echo -e "Link (Celcom)   : ${trojanlink2}"
 echo -e "\e[$line═════════════════════════════════\e[m"
-echo -e "Link (Yes)   : ${trojanlink3}"
+echo -e "Link (Yes)      : ${trojanlink3}"
 echo -e "\e[$line═════════════════════════════════\e[m"
-echo -e "Link (Digi)  : ${trojanlink4}"
+echo -e "Link (Digi)     : ${trojanlink4}"
 echo -e "\e[$line═════════════════════════════════\e[m"
 echo -e "Created   :$harini"
 echo -e "Expired   :$exp"
@@ -904,24 +907,24 @@ trws="$(cat ~/log-install.txt | grep -w "Xray Trojan Ws Tls" | cut -d: -f2|sed '
 echo -e   "  \e[$line═══════════════════════════════════════════════════════\e[m"
 echo -e   "  \e[$back_text          \e[30m[\e[$box TRIAL USER XRAY TROJAN WS TLS\e[30m ]\e[1m           \e[m"
 echo -e   "  \e[$line═══════════════════════════════════════════════════════\e[m"
-# Create Expried
+# Create Expried 
 masaaktif="1"
 exp=$(date -d "$masaaktif days" +"%Y-%m-%d")
 
-# Make Random Username
+# Make Random Username 
 user=trial`</dev/urandom tr -dc X-Z0-9 | head -c4`
 
-patchtls=/trojan
-patchnone=/trojan
-#read -p "   Bug Address (Example: www.google.com) : " address
-#read -p "   Bug SNI (Example : m.facebook.com) : " sni
-#bug_addr=${address}.
-#bug_addr2=$address
-#if [[ $address == "" ]]; then
-#sts=$bug_addr2
-#else
-#sts=$bug_addr
-#fi
+patchtls=/trickers-trojanwstls
+patchnone=/trickers-trojanwsntls
+read -p "   Bug Address (Example: www.google.com) : " address
+read -p "   Bug SNI (Example : m.facebook.com) : " sni
+bug_addr=${address}.
+bug_addr2=$address
+if [[ $address == "" ]]; then
+sts=$bug_addr2
+else
+sts=$bug_addr
+fi
 harini=`date -d "0 days" +"%Y-%m-%d"`
 sed -i '/#xray-trojan-tls$/a\#trws '"$user $exp $harini $uuid"'\
 },{"id": "'""$uuid""'","password": "'""$user""'","email": "'""$user""'"' /usr/local/etc/xray/trojan.json
@@ -929,10 +932,10 @@ sed -i '/#xray-trojan-nontls$/a\#trws '"$user $exp $harini $uuid"'\
 },{"id": "'""$uuid""'","password": "'""$user""'","email": "'""$user""'"' /usr/local/etc/xray/trojannone.json
 systemctl restart xray@trojan
 systemctl restart xray@trojannone
-trojanlink1="trojan://${user}@bug.com:443?path=$patchtls&security=tls&host=${sts}${domain}&type=ws&sni=bug.com#${user}"
-trojanlink2="trojan://${user}@bug.com:80?path=$patchnone&security=none&host=${domain}&type=ws#${user}"
-trojanlink3="trojan://${user}@bug.com:80?path=$patchnone&security=none&host=${domain}&type=ws#${user}"
-trojanlink4="trojan://${user}@bug.com:80?path=$patchnone&security=none&host=${domain}&type=ws#${user}"
+trojanlink1="trojan://${user}@cdn-dev.hotlink.com.my:443?path=$patchtls&security=tls&host=${sts}${domain}&type=ws&sni=cdn-dev.hotlink.com.my#${user}"
+trojanlink2="trojan://${user}@www.speedtest.net:443?path=$patchtls&security=tls&host=${sts}${domain}&type=ws&sni=www.speedtest.net#${user}"
+trojanlink3="trojan://${user}@cdn.who.int:80?path=$patchnone&security=none&host=${sts}${domain}&type=ws#${user}"
+trojanlink4="trojan://${user}@162.159.134.61:80?path=$patchnone&security=none&host=${sts}${domain}&type=ws#${user}"
 clear
 echo -e ""
 echo -e "\e[$line═════[TRIAL XRAY TROJAN WS TLS]═════\e[m"
@@ -960,13 +963,13 @@ echo -e "\e[31m❌ Abuse Usage"
 echo -e "\e[31m❌ Multi-Login ID"
 echo -e "\e[31m❌ Sharing Premium Config\e[m"
 echo -e "\e[$line═════════════════════════════════\e[m"
-echo -e "Link (Maxis) : ${trojanlink1}"
+echo -e "Link (Maxis)    : ${trojanlink1}"
 echo -e "\e[$line═════════════════════════════════\e[m"
-echo -e "Link (Celcom): ${trojanlink2}"
+echo -e "Link (Celcom)   : ${trojanlink2}"
 echo -e "\e[$line═════════════════════════════════\e[m"
-echo -e "Link (Yes)   : ${trojanlink3}"
+echo -e "Link (Yes)      : ${trojanlink3}"
 echo -e "\e[$line═════════════════════════════════\e[m"
-echo -e "Link (Digi)  : ${trojanlink4}"
+echo -e "Link (Digi)     : ${trojanlink4}"
 echo -e "\e[$line═════════════════════════════════\e[m"
 echo -e "Created   :$harini"
 echo -e "Expired   :$exp"
@@ -1001,16 +1004,16 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^#trws " "/usr/local/etc/xray/trojan.json")
 			read -rp "Select one client [1-${NUMBER_OF_CLIENTS}]: " CLIENT_NUMBER
 		fi
 	done
-patchtls=/trojan
-patchnone=/trojan
+patchtls=/trickers-trojanwstls
+patchnone=/trickers-trojanwsntls
 user=$(grep -E "^#trws " "/usr/local/etc/xray/trojan.json" | cut -d ' ' -f 2 | sed -n "${CLIENT_NUMBER}"p)
 harini=$(grep -E "^#trws " "/usr/local/etc/xray/trojan.json" | cut -d ' ' -f 4 | sed -n "${CLIENT_NUMBER}"p)
 exp=$(grep -E "^#trws " "/usr/local/etc/xray/trojan.json" | cut -d ' ' -f 3 | sed -n "${CLIENT_NUMBER}"p)
 uuid=$(grep -E "^#trws " "/usr/local/etc/xray/trojan.json" | cut -d ' ' -f 5 | sed -n "${CLIENT_NUMBER}"p)
-trojanlink1="trojan://${user}@bug.com:443?path=$patchtls&security=tls&host=${sts}${domain}&type=ws&sni=bug.com#${user}"
-trojanlink2="trojan://${user}@bug.com:80?path=$patchnone&security=none&host=${domain}&type=ws#${user}"
-trojanlink3="trojan://${user}@bug.com:80?path=$patchnone&security=none&host=${domain}&type=ws#${user}"
-trojanlink4="trojan://${user}@bug.com:80?path=$patchnone&security=none&host=${domain}&type=ws#${user}"
+trojanlink1="trojan://${user}@cdn-dev.hotlink.com.my:443?path=$patchtls&security=tls&host=${sts}${domain}&type=ws&sni=cdn-dev.hotlink.com.my#${user}"
+trojanlink2="trojan://${user}@www.speedtest.net:443?path=$patchtls&security=tls&host=${sts}${domain}&type=ws&sni=www.speedtest.net#${user}"
+trojanlink3="trojan://${user}@cdn.who.int:80?path=$patchnone&security=none&host=${sts}${domain}&type=ws#${user}"
+trojanlink4="trojan://${user}@162.159.134.61:80?path=$patchnone&security=none&host=${sts}${domain}&type=ws#${user}"
 clear
 echo -e ""
 echo -e "\e[$line════════[XRAY TROJAN WS TLS]════════\e[m"
@@ -1038,13 +1041,13 @@ echo -e "\e[31m❌ Abuse Usage"
 echo -e "\e[31m❌ Multi-Login ID"
 echo -e "\e[31m❌ Sharing Premium Config\e[m"
 echo -e "\e[$line═════════════════════════════════\e[m"
-echo -e "Link (Maxis) : ${trojanlink1}"
+echo -e "Link (Maxis)    : ${trojanlink1}"
 echo -e "\e[$line═════════════════════════════════\e[m"
-echo -e "Link (Celcom): ${trojanlink2}"
+echo -e "Link (Celcom)   : ${trojanlink2}"
 echo -e "\e[$line═════════════════════════════════\e[m"
-echo -e "Link (Yes)   : ${trojanlink3}"
+echo -e "Link (Yes)      : ${trojanlink3}"
 echo -e "\e[$line═════════════════════════════════\e[m"
-echo -e "Link (Digi)  : ${trojanlink4}"
+echo -e "Link (Digi)     : ${trojanlink4}"
 echo -e "\e[$line═════════════════════════════════\e[m"
 echo -e "Created   :$harini"
 echo -e "Expired   :$exp"
