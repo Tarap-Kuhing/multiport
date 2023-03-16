@@ -192,11 +192,11 @@ echo -e   "  \e[$line═══════════════════�
 echo -e   "  \e[$back_text          \e[30m[\e[$box TRIAL USER XRAY TROJAN TCP TLS\e[30m ]\e[1m           \e[m"
 echo -e   "  \e[$line═══════════════════════════════════════════════════════\e[m"
 
-# // Create Expried
+# // Create Expried 
 export masaaktif="1"
 export exp=$(date -d "$masaaktif days" +"%Y-%m-%d")
 
-# // Make Random Username
+# // Make Random Username 
 export user=Trial`</dev/urandom tr -dc X-Z0-9 | head -c4`
 
 read -p "   Bug Address (Example: www.google.com) : " address
