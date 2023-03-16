@@ -77,6 +77,8 @@ echo start
 sleep 0.5
 source /var/lib/ipvps.conf
 domain=$(cat /usr/local/etc/xray/domain)
+systemctl enable xray
+systemctl enable nginx
 sudo lsof -t -i tcp:80 -s tcp:listen | sudo xargs kill
 cd /root/
 wget -O acme.sh https://raw.githubusercontent.com/acmesh-official/acme.sh/master/acme.sh
@@ -93,7 +95,6 @@ clear
 sleep 3
 #restartxray
 systemctl daemon-reload
-systemctl enable xray
 systemctl restart xray
 systemctl restart nginx
 systemctl enable runn
