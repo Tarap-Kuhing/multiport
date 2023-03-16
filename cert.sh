@@ -78,6 +78,7 @@ sleep 0.5
 source /var/lib/ipvps.conf
 domain=$(cat /usr/local/etc/xray/domain)
 emailcf=$(cat /usr/local/etc/xray/email)
+systemctl stop xray
 clear
 cd /root/
 wget -O acme.sh https://raw.githubusercontent.com/acmesh-official/acme.sh/master/acme.sh
@@ -88,4 +89,4 @@ echo "starting...., Port 80 Akan di Hentikan Saat Proses install Cert"
 bash acme.sh --register-account -m merahjambo@gmail.com
 bash acme.sh --issue --standalone -d $domain --force
 bash acme.sh --installcert -d $domain --fullchainpath /etc/xray/xray.crt --keypath /etc/xray/xray.key
-restart
+systemctl restart xray
