@@ -22,17 +22,18 @@ rm -f backup.zip
 sleep 1
 echo Start Restore
 cd /root/backup
-cp passwd /etc/
-cp group /etc/
-cp shadow /etc/
-cp gshadow /etc/
-cp msmtprc /etc/
-cp email /home/
-cp -r var/lib/
-cp -r domain /root/
-cp -r xray /etc/
-cp -r vps /home/
-cp crontab /etc/
+cp /etc/passwd backup/
+cp /etc/group backup/
+cp /etc/shadow backup/
+cp /etc/gshadow backup/
+cp /etc/msmtprc backup/
+cp /home/email backup/
+#cp /etc/ppp/chap-secrets backup/chap-secrets
+cp -r /var/lib/ backup
+cp -r /usr/local/etc/xray backup/xray
+#cp -r /etc/xray backup/xray
+cp -r /home/vps backup/vps
+#cp -r /home/vps/public_html backup/public_html
 
 systemctl restart xray
 rm -rf /root/backup
