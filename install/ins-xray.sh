@@ -1196,6 +1196,7 @@ END
 # // IPTABLE TCP
 iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 443 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 8080 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 10085 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 10086 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 10087 -j ACCEPT
@@ -1206,6 +1207,7 @@ iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 10089 -j ACCEPT
 # // IPTABLE UDP
 iptables -I INPUT -m state --state NEW -m udp -p udp --dport 443 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m udp -p udp --dport 80 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m tcp -p udp --dport 8080 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m udp -p udp --dport 10085 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m udp -p udp --dport 10086 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m udp -p udp --dport 10087 -j ACCEPT
