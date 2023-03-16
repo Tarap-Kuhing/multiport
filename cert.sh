@@ -117,8 +117,6 @@ systemctl start nginx
 echo Done
 sleep 0.5
 echo -e "[${GREEN}Done${NC}]"
-else
 echo -e "\e[1;32mPort 80 is used\e[0m"
 echo -e "\e[1;31mBefore renew domains, make sure port 80 is not used, if you are not sure whether port 80 is in use, please type info to see the active port.\e[0m"
 sleep 1
-fi
