@@ -33,7 +33,9 @@ cp ss.conf /etc/shadowsocks-libev/ss.conf
 cp -r var/lib/
 cp -r sstp /home/
 cp -r xray /etc/
-cp -r v2ray /etc/
+cp -r backup/xray
+cp -r /usr/local/etc/xray/backup/xray
+cp -r backup/xray/usr/local/etc/xray
 cp -r shadowsocksr /usr/local/
 cp -r public_html/vps /home/vps/
 cp crontab /etc/
