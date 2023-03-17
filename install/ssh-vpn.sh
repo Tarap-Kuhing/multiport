@@ -154,7 +154,7 @@ systemctl enable vnstat
 rm -f /root/vnstat-2.6.tar.gz
 rm -rf /root/vnstat-2.6
 
-# // install stunnel
+# install stunnel
 apt install stunnel4 -y
 cat > /etc/stunnel/stunnel.conf <<-END
 cert = /etc/stunnel/stunnel.pem
@@ -162,38 +162,33 @@ client = no
 socket = a:SO_REUSEADDR=1
 socket = l:TCP_NODELAY=1
 socket = r:TCP_NODELAY=1
-
 [dropbear]
 accept = 8880
 connect = 127.0.0.1:22
-
 [dropbear]
 accept = 8443
 connect = 127.0.0.1:109
-
+[ws-stunnel]
+accept = 444
+connect = 700
 [openvpn]
-accept = 442
+accept = 990
 connect = 127.0.0.1:1194
 
-[kontol-stunnel]
-accept = 2096
-connect = 127.0.0.1:2091
 END
 
-# // make a certificate
+# make a certificate
 openssl genrsa -out key.pem 2048
 openssl req -new -x509 -key key.pem -out cert.pem -days 1095 \
 -subj "/C=$country/ST=$state/L=$locality/O=$organization/OU=$organizationalunit/CN=$commonname/emailAddress=$email"
 cat key.pem cert.pem >> /etc/stunnel/stunnel.pem
 
-# // konfigurasi stunnel
+# konfigurasi stunnel
 sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
-/lib/systemd/systemd-sysv-install enable stunnel4
-systemctl start stunnel4
 /etc/init.d/stunnel4 restart
 
 # // OpenVPN
-wget https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/vpn.sh &&  chmod +x vpn.sh && ./vpn.sh
+wget https://raw.githubusercontent.com/Tarap-Kuhing/tarap/main/ssh/vpn.sh &&  chmod +x vpn.sh && ./vpn.sh
 
 # // install lolcat
 wget https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/lolcat.sh &&  chmod +x lolcat.sh && ./lolcat.sh
