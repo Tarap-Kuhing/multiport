@@ -44,8 +44,8 @@ cp /etc/crontab /root/ backup > /dev/null 2>&1
 cd /root
 cd /root
 zip -r $IP-$date.zip backup > /dev/null 2>&1
-rclone copy /root/$IP-$date.zip dr:backup/
-url=$(rclone link dr:backup/$IP-$date.zip)
+rclone copy /root/$IP-$date.zip rclone:backup/
+url=$(rclone link rclone:backup/$IP-$date.zip)
 id=(`echo $url | grep '^https' | cut -d'=' -f2`)
 link="https://drive.google.com/u/4/uc?id=${id}&export=download"
 echo -e "
