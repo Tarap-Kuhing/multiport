@@ -31,7 +31,7 @@ cp email/home/
 cp -r var/lib/
 cp -r root/backup/xray/usr/local/etc/
 cp -r root/backup/xray/usr/local/etc/xray
-cp -r backup/xray/usr/local/etc/xray
+cp -r backup/xray/usr/local/etc/
 cp -r root/backup/v2ray/usr/local/etc/xray
 cp -r root/backup/v2ray/usr/local/etc/
 cp -r backup/v2ray/usr/local/etc/xray
