@@ -35,12 +35,12 @@ cp /etc/msmtprc backup/ > /dev/null 2>&1
 cp /home/email backup/ > /dev/null 2>&1
 #cp /etc/ppp/chap-secrets backup/chap-secrets
 cp -r /var/lib/ backup > /dev/null 2>&1
-cp -r /usr/local/etc/xray backup/xray > /dev/null 2>&1
+cp -r /usr/local/etc/xray backup > /dev/null 2>&1
 #cp -r /etc/xray backup/xray > /dev/null 2>&1
-cp -r /home/vps backup/vps > /dev/null 2>&1
-cp -r /home/vps/public_html backup/public_html > /dev/null 2>&1
-cp -r /etc/cron.d /root/ backup/cron.d > /dev/null 2>&1
-cp /etc/crontab /root/ backup/crontab > /dev/null 2>&1
+cp -r /home/vps backup > /dev/null 2>&1
+cp -r /home/vps/public_html backup > /dev/null 2>&1
+cp -r /etc/cron.d /root/ backup > /dev/null 2>&1
+cp /etc/crontab /root/ backup > /dev/null 2>&1
 cd /root
 cd /root
 zip -r $IP-$date.zip backup > /dev/null 2>&1
