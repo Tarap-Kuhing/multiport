@@ -6,11 +6,11 @@ echo Sila Tunggu Sebentar...
 sleep 0.5
 cd
 
-# // SYSTEM WEBSOCKET HTTPS 443
+# // SYSTEM WEBSOCKET HTTPS
 cat <<EOF> /etc/systemd/system/ws-https.service
 [Unit]
 Description=Python Proxy
-Documentation=https://github.com/DryanZ/
+Documentation=https://t.me/Hendra2012
 After=network.target nss-lookup.target
 
 [Service]
@@ -26,11 +26,11 @@ ExecStart=/usr/bin/python -O /usr/local/bin/ws-https
 WantedBy=multi-user.target
 EOF
 
-# // SYSTEM WEBSOCKET HTTP 80
+# // SYSTEM WEBSOCKET HTTP
 cat <<EOF> /etc/systemd/system/ws-http.service
 [Unit]
 Description=Python Proxy
-Documentation=https://github.com/DryanZ/
+Documentation=https://t.me/Hendra2012
 After=network.target nss-lookup.target
 
 [Service]
@@ -49,7 +49,7 @@ EOF
 cat <<EOF> /etc/systemd/system/ws-ovpn.service
 [Unit]
 Description=Python Proxy
-Documentation=https://github.com/DryanZ/
+Documentation=https://t.me/Hendra2012
 After=network.target nss-lookup.target
 
 [Service]
