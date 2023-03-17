@@ -204,7 +204,7 @@ wget -O ssh "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/menu/
 wget -O autoreboot "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/system/autoreboot.sh"
 wget -O bbr "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/system/bbr.sh"
 wget -O port-ohp "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/change-port/port-ohp.sh"
-#wget -O port-xray "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/change-port/port-xray.sh"
+wget -O rclone "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/rclone.conf"
 wget -O panel-domain "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/menu/panel-domain.sh"
 wget -O dns "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/system/dns.sh"
 wget -O nf "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/system/nf.sh"
@@ -253,7 +253,7 @@ chmod +x ssh
 chmod +x autoreboot
 chmod +x bbr
 chmod +x port-ohp
-#chmod +x port-xray
+chmod +x rclone
 chmod +x panel-domain
 chmod +x dns
 chmod +x nf
