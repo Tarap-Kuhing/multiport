@@ -28,7 +28,7 @@ cat > /etc/openvpn/client-tcp-ohp1194.ovpn <<END
 client
 dev tun
 proto tcp
-remote "bug.com" 1194
+remote "$domain" 1194
 resolv-retry infinite
 route-method exe
 nobind
