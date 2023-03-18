@@ -188,7 +188,7 @@ sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
 /etc/init.d/stunnel4 restart
 
 # // OpenVPN
-wget https://raw.githubusercontent.com/Tarap-Kuhing/tarap/main/ssh/vpn.sh &&  chmod +x vpn.sh && ./vpn.sh
+wget https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/vpn.sh &&  chmod +x vpn.sh && ./vpn.sh
 
 # // install lolcat
 wget https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/lolcat.sh &&  chmod +x lolcat.sh && ./lolcat.sh
