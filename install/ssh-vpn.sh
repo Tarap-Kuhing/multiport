@@ -130,12 +130,12 @@ echo "/usr/sbin/nologin" >> /etc/shells
 /etc/init.d/dropbear restart
 
 # // install squid for debian 9,10 & ubuntu 20.04
-apt -y install squid3
+#apt -y install squid3
 
 # install squid for debian 11
-apt -y install squid
-wget -O /etc/squid/squid.conf "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/squid3.conf"
-sed -i $MYIP2 /etc/squid/squid.conf
+#apt -y install squid
+#wget -O /etc/squid/squid.conf "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/squid3.conf"
+#sed -i $MYIP2 /etc/squid/squid.conf
 
 # // setting vnstat
 apt -y install vnstat
@@ -188,7 +188,7 @@ sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
 /etc/init.d/stunnel4 restart
 
 # // OpenVPN
-wget https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/vpn.sh &&  chmod +x vpn.sh && ./vpn.sh
+wget https://raw.githubusercontent.com/Tarap-Kuhing/tarap/main/ssh/vpn.sh &&  chmod +x vpn.sh && ./vpn.sh
 
 # // install lolcat
 wget https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/lolcat.sh &&  chmod +x lolcat.sh && ./lolcat.sh
