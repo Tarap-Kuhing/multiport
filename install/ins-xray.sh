@@ -174,17 +174,17 @@ cat> /usr/local/etc/xray/config.json << END
                         "xver": 1
                     },
                     {
-                        "path": "/trickers-vlesswstls", # // VMESS WS TLS
+                        "path": "/vlesswstls", # // VMESS WS TLS
                         "dest": 1212,
                         "xver": 1
                     },
                     {
-                        "path": "/trickers-vmesswstls", # // VLESS WS TLS
+                        "path": "/vmesswstls", # // VLESS WS TLS
                         "dest": 1213,
                         "xver": 1
                     },
                     {
-                        "path": "/trickers-trojanwstls", # // TROJAN WS TLS
+                        "path": "/trojanwstls", # // TROJAN WS TLS
                         "dest": 1214,
                         "xver": 1
                     }
@@ -289,7 +289,7 @@ cat> /usr/local/etc/xray/tcp.json << END
     "inbounds": [
         {
       "listen": "127.0.0.1",
-      "port": 10085, # CEK USER QUOTA
+      "port": 10086, # CEK USER QUOTA
       "protocol": "dokodemo-door",
       "settings": {
         "address": "127.0.0.1"
@@ -404,7 +404,7 @@ cat> /usr/local/etc/xray/vless.json << END
     "inbounds": [
         {
       "listen": "127.0.0.1",
-      "port": 10086, # CEK USER QUOTA
+      "port": 10085, # CEK USER QUOTA
       "protocol": "dokodemo-door",
       "settings": {
         "address": "127.0.0.1"
@@ -516,7 +516,7 @@ cat> /usr/local/etc/xray/vlessnone.json << END
     "inbounds": [
         {
       "listen": "127.0.0.1",
-      "port": 10086, # CEK USER QUOTA
+      "port": 10089, # CEK USER QUOTA
       "protocol": "dokodemo-door",
       "settings": {
         "address": "127.0.0.1"
@@ -627,7 +627,7 @@ cat> /usr/local/etc/xray/vmess.json << END
     "inbounds": [
         {
       "listen": "127.0.0.1",
-      "port": 10087, # CEK USER QUOTA
+      "port": 10085, # CEK USER QUOTA
       "protocol": "dokodemo-door",
       "settings": {
         "address": "127.0.0.1"
@@ -739,7 +739,7 @@ cat> /usr/local/etc/xray/vmessnone.json << END
     "inbounds": [
         {
       "listen": "127.0.0.1",
-      "port": 10087, # CEK USER QUOTA
+      "port": 10089, # CEK USER QUOTA
       "protocol": "dokodemo-door",
       "settings": {
         "address": "127.0.0.1"
@@ -850,7 +850,7 @@ cat> /usr/local/etc/xray/trojan.json << END
     "inbounds": [
         {
       "listen": "127.0.0.1",
-      "port": 10088, # CEK USER QUOTA
+      "port": 10085, # CEK USER QUOTA
       "protocol": "dokodemo-door",
       "settings": {
         "address": "127.0.0.1"
@@ -961,7 +961,7 @@ cat> /usr/local/etc/xray/trojannone.json << END
     "inbounds": [
         {
       "listen": "127.0.0.1",
-      "port": 10088, # CEK USER QUOTA
+      "port": 10089, # CEK USER QUOTA
       "protocol": "dokodemo-door",
       "settings": {
         "address": "127.0.0.1"
@@ -1096,17 +1096,17 @@ cat> /usr/local/etc/xray/none.json << END
             "xver": 1
           },
           {
-            "path": "/trickers-vlesswsntls", # // VLESS NONE
+            "path": "/vlesswsntls", # // VLESS NONE
             "dest": 1301,
             "xver": 1
           },
           {
-            "path": "/trickers-vmesswsntls", # // VMESS NONE
+            "path": "/vmesswsntls", # // VMESS NONE
             "dest": 1302,
             "xver": 1
           },
           {
-             "path": "/trickers-trojanwsntls", # // TROJAN NONE
+             "path": "/trojanwsntls", # // TROJAN NONE
             "dest": 1303,
             "xver": 1
           }
@@ -1194,22 +1194,16 @@ END
 # // IPTABLE TCP
 iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 443 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
-iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 8080 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 10085 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 10086 -j ACCEPT
-iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 10087 -j ACCEPT
-iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 10088 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 10089 -j ACCEPT
 
 
 # // IPTABLE UDP
 iptables -I INPUT -m state --state NEW -m udp -p udp --dport 443 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m udp -p udp --dport 80 -j ACCEPT
-iptables -I INPUT -m state --state NEW -m tcp -p udp --dport 8080 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m udp -p udp --dport 10085 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m udp -p udp --dport 10086 -j ACCEPT
-iptables -I INPUT -m state --state NEW -m udp -p udp --dport 10087 -j ACCEPT
-iptables -I INPUT -m state --state NEW -m udp -p udp --dport 10088 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m udp -p udp --dport 10089 -j ACCEPT
 iptables-save > /etc/iptables.up.rules
 iptables-restore -t < /etc/iptables.up.rules
