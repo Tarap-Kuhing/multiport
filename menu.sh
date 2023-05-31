@@ -23,11 +23,11 @@ username=$(curl https://raw.githubusercontent.com/kuhing/ip/main/vps | grep $MYI
 echo "$username" >/usr/bin/user
 # Order ID
 rm -f /usr/bin/ver
-user=$(curl https://raw.githubusercontent.com/jambanbkn/kuhing/ip/main/vps | grep $MYIP | awk '{print $3}')
+user=$(curl https://raw.githubusercontent.com/kuhing/ip/main/vps | grep $MYIP | awk '{print $3}')
 echo "$user" >/usr/bin/ver
 # validity
 rm -f /usr/bin/e
-valid=$(curl https://raw.githubusercontent.com/jambanbkn/kuhing/ip/main/vps | grep $MYIP | awk '{print $4}')
+valid=$(curl https://raw.githubusercontent.com/kuhing/ip/main/vps | grep $MYIP | awk '{print $4}')
 echo "$valid" >/usr/bin/e
 # DETAIL ORDER
 username=$(cat /usr/bin/user)
