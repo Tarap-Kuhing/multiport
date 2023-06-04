@@ -130,6 +130,76 @@ clear
 echo -e "\e[0;32mGetting New Version Script..\e[0m"
 sleep 1
 echo ""
+rm -rf tes
+rm -rf addip
+rm -rf add-host
+rm -rf menu
+rm -rf add-ssh
+rm -rf trial
+rm -rf maxisdigi
+rm -rf del-ssh
+rm -rf member
+rm -rf delete
+rm -rf cek-ssh
+rm -rf restart
+rm -rf speedtest
+rm -rf about
+rm -rf autokill
+rm -rf tendang
+rm -rf ceklim
+rm -rf ram
+rm -rf renew-ssh
+rm -rf clear-log
+rm -rf change-port
+rm -rf restore
+rm -rf port-ovpn
+rm -rf port-ssl
+rm -rf port-squid
+rm -rf port-websocket
+rm -rf wbmn
+rm -rf xp
+rm -rf kernel-updt
+rm -rf user-list
+rm -rf user-lock
+rm -rf user-unlock
+rm -rf user-password
+rm -rf antitorrent
+rm -rf cfa
+rm -rf cfd
+rm -rf cfp
+rm -rf swap
+rm -rf check-sc
+rm -rf ssh
+rm -rf autoreboot
+rm -rf bbr
+rm -rf port-ohp
+rm -rf rclone
+rm -rf panel-domain
+rm -rf dns
+rm -rf nf
+
+rm -rf update
+rm -rf run-update
+rm -rf message-ssh
+rm -rf change-port
+rm -rf system
+rm -rf menu
+rm -rf add-host
+rm -rf check-sc
+rm -rf cert
+rm -rf trojaan
+rm -rf xraay
+rm -rf xp
+rm -rf port-xray
+rm -rf themes
+rm -rf autobackup
+rm -rf backup
+rm -rf bckp
+rm -rf restore
+rm -rf ins-xray
+rm -rf running
+rm -rf m-backup
+clear
 # UPDATE RUN-UPDATE
 cd /usr/bin
 wget -O run-update "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/update/run-update.sh"
