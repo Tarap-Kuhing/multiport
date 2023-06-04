@@ -179,7 +179,7 @@ cat> /usr/local/etc/xray/config.json << END
                         "xver": 1
                     },
                     {
-                        "path": "/vmesswstls", # // VMESS WS TLS
+                        "path": "/vmess", # // VMESS WS TLS
                         "dest": 1213,
                         "xver": 1
                     },
@@ -653,7 +653,7 @@ cat> /usr/local/etc/xray/vmess.json << END
                 "security": "none",
                 "wsSettings": {
                     "acceptProxyProtocol": true,
-                    "path": "/vmesswstls"
+                    "path": "/vmess"
                 }
             }
         }
@@ -763,7 +763,7 @@ cat> /usr/local/etc/xray/vmessnone.json << END
          "network": "ws",
             "wsSettings": {
               "acceptProxyProtocol": true,
-                "path": "/vmesswsntls"
+                "path": "/vmess"
                 }
             }
         }
@@ -1101,7 +1101,7 @@ cat> /usr/local/etc/xray/none.json << END
             "xver": 1
           },
           {
-            "path": "/vmesswsntls", # // VMESS NONE
+            "path": "/vmess", # // VMESS NONE
             "dest": 1302,
             "xver": 1
           },
@@ -1191,6 +1191,27 @@ cat> /usr/local/etc/xray/none.json << END
   }
 }
 END
+
+# / / Installation Xray Service
+cat > /etc/systemd/system/xray.service << END
+[Unit]
+Description=Xray Service By Tarap-Kuhing
+Documentation=https://t.me/Baung2012
+After=network.target nss-lookup.target
+
+[Service]
+User=root
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+NoNewPrivileges=true
+ExecStart=/usr/local/bin/xray -config /etc/xray/config.json
+Restart=on-failure
+RestartPreventExitStatus=23
+
+[Install]
+WantedBy=multi-user.target
+END
+
 # // IPTABLE TCP
 iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 443 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
