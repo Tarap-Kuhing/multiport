@@ -12,7 +12,7 @@ WH='\033[1;37m'
 ###########- END COLOR CODE -##########
 
 BURIQ () {
-    curl -sS https://raw.githubusercontent.com/kuhing/ip/main/vps > /root/tmp
+    curl -sS https://raw.githubusercontent.com/jambanbkn/tarap/main/ipvps > /root/tmp
     data=( `cat /root/tmp | grep -E "^### " | awk '{print $2}'` )
     for user in "${data[@]}"
     do
@@ -30,7 +30,7 @@ BURIQ () {
 }
 
 MYIP=$(curl -sS ipv4.icanhazip.com)
-Name=$(curl -sS https://raw.githubusercontent.com/kuhing/ip/main/vps | grep $MYIP | awk '{print $2}')
+Name=$(curl -sS https://raw.githubusercontent.com/jambanbkn/tarap/main/ipvps | grep $MYIP | awk '{print $2}')
 echo $Name > /usr/local/etc/.$Name.ini
 CekOne=$(cat /usr/local/etc/.$Name.ini)
 
@@ -47,7 +47,7 @@ fi
 
 PERMISSION () {
     MYIP=$(curl -sS ipv4.icanhazip.com)
-    IZIN=$(curl -sS https://raw.githubusercontent.com/kuhing/ip/main/vps | awk '{print $4}' | grep $MYIP)
+    IZIN=$(curl -sS https://raw.githubusercontent.com/jambanbkn/tarap/main/ipvps | awk '{print $4}' | grep $MYIP)
     if [ "$MYIP" = "$IZIN" ]; then
     Bloman
     else
@@ -107,17 +107,17 @@ clear
 
 setadmin() {
 #isi link git
-linkinstall="https://raw.githubusercontent.com/kuhinh/ip/main"
+linkinstall="https://raw.githubusercontent.com/jambanbkn/tarap/main"
 rm -rf /etc/tarap/
 mkdir -p /etc/tarap
 read -p "Masukan Token Code Github Anda : " ans
 echo -e "$ans" >> /etc/tarap/access.conf
-wget -O /usr/bin/vps ${linkinstall}/vps && chmod +x /usr/bin/vps
+wget -O /usr/bin/ipvps ${linkinstall}/ipvps && chmod +x /usr/bin/ipvps
 clear
 sed -i "/^# IPREGBEGIN_EXP/,/^# IPREGEND_EXPIP/d" /etc/crontab
 cat << EOF >> /etc/crontab
 # IPREGBEGIN_EXP
-1 0 * * * root /usr/bin/vps # delete expired IP VPS License
+1 0 * * * root /usr/bin/ipvps # delete expired IP VPS License
 # IPREGEND_EXPIP
 EOF
 rm -f /root/.bash_history
@@ -137,7 +137,7 @@ rm -rf /root/allow
 read -p "IP VPS      : " daftar
 echo -e "[ ${Lyellow}INFO${NC} ] Checking the IPVPS if Already Registered"
 sleep 1
-cek=$( curl -sS https://raw.githubusercontent.com/kuhing/ip/main/vps | awk '{print $5}' | grep $daftar )
+cek=$( curl -sS https://raw.githubusercontent.com/jambanbkn/tarap/main/ipvps | awk '{print $5}' | grep $daftar )
 if [[ $daftar = $cek ]]; then
 echo -e "\e[1;31m The IP VPS Has Been Registered\e[0m"
 sleep 2
@@ -169,23 +169,23 @@ add-ip
 fi
 
 daftarip=$(cat /root/data)
-rm -rf /root/vps
-git config --global user.email "lailafauziyah00@gmail.com"
-git config --global user.name "kuhing"
-git clone https://github.com/kuhing/ip.git
-mkdir /root/vps
-cd /root/vps/
+rm -rf /root/ipvps
+git config --global user.email "jambanbkn@gmail.com"
+git config --global user.name "jambanbkn"
+git clone https://github.com/jambanbkn/ipvps.git
+mkdir /root/ipvps
+cd /root/ipvps/
 rm -rf .git
 git init
 touch ipvps
-echo "$daftarip" >> /root/ipvps/vps
+echo "$daftarip" >> /root/ipvps/ipvps
 echo -e "Client IP VPS Add Successfully"
 git init >/dev/null 2>&1
 git add .
 git commit -m register
 git branch -M main
-git remote add origin https://github.com/kuhing/ip.git
-git push -f https://${tokengit}@github.com/kuhing/ip.git
+git remote add origin https://github.com/jambanbkn/ipvps.git
+git push -f https://${tokengit}@github.com/jambanbkn/ipvps.git
 echo -e "IPVPS Registration Completed"
 sleep 1
 links1="apt-get update && apt-get upgrade -y && update-grub && sleep 2 && reboot"
@@ -220,9 +220,9 @@ echo -e "\033[0;34m------------------------------------------\033[0m"
 echo "  Siapkan Email Cloudflare Untuk Cert Xray  "
 echo "  Pastikan Domain Dah Siap Pointing Di Cloudflare Sebelum Install  "
 echo -e "\033[0;34m------------------------------------------\033[0m"
-rm -rf /root/vps
+rm -rf /root/ipvps
 rm -rf /root/data
-rm -rf /root/vps
+rm -rf /root/ipvps
 echo ""
 read -n 1 -s -r -p "Press any key to back on menu-addip"
 addip
@@ -236,14 +236,14 @@ clear
 exit 0
 fi
 clear
-rm -rf /root/vps
+rm -rf /root/ipvps
 rm -rf /root/data
-rm -rf /root/vps
-git config --global user.email "lailafauziyah00@gmail.com"
-git config --global user.name "kuhing"
-git clone https://github.com/kuhing/ip.git
-mkdir /root/vps
-cd /root/vps/
+rm -rf /root/ipvps
+git config --global user.email "jambanbkn@gmail.com"
+git config --global user.name "jambanbkn"
+git clone https://github.com/jambanbkn/ipvps.git
+mkdir /root/ipvps
+cd /root/ipvps/
 rm -rf .git
 git init
 touch ipvps
