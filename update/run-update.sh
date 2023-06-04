@@ -200,6 +200,7 @@ wget -O cfd "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/cloud
 wget -O cfp "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/cloud/cfp.sh"
 wget -O swap "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/swapkvm.sh"
 wget -O check-sc "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/system/running.sh"
+wget -O m-backup "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/system/m-backup.sh"
 wget -O ssh "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/menu/ssh.sh"
 wget -O autoreboot "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/system/autoreboot.sh"
 wget -O bbr "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/system/bbr.sh"
@@ -277,6 +278,8 @@ chmod +x backup
 chmod +x bckp
 chmod +x restore
 chmod +x ins-xray
+chmod +x running
+chmod +x m-backup
 clear
 echo -e ""
 echo -e "\e[0;32mDownloaded successfully!\e[0m"
