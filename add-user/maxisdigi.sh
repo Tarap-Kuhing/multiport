@@ -122,9 +122,10 @@ until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
 			exit 1
 		fi
 	done
+read -p "   Masukan (uuid) : " uuid
 #patchtls=/vmesswstls
 #patchnontls=/vmesswsntls
-uuid=$(cat /proc/sys/kernel/random/uuid)
+#uuid=$(cat /proc/sys/kernel/random/uuid)
 #read -p "   Bug Address (Example: www.google.com) : " address
 #read -p "   Bug SNI/Host (Example : m.facebook.com) : " sni
 read -p "   Expired (days) : " masaaktif
@@ -262,8 +263,8 @@ user=Trial`</dev/urandom tr -dc X-Z0-9 | head -c4`
 patchtls=/trickers-vmesswstls
 patchnontls=/trickers-vmesswsntls
 uuid=$(cat /proc/sys/kernel/random/uuid)
-read -p "   Bug Address (Example: www.google.com) : " address
-read -p "   Bug SNI/Host (Example : m.facebook.com) : " sni
+#read -p "   Bug Address (Example: www.google.com) : " address
+#read -p "   Bug SNI/Host (Example : m.facebook.com) : " sni
 bug_addr=${address}.
 bug_addr2=$address
 if [[ $address == "" ]]; then
