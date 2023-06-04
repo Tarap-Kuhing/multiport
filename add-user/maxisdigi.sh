@@ -122,11 +122,11 @@ until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
 			exit 1
 		fi
 	done
-patchtls=/trickers-vmesswstls
-patchnontls=/trickers-vmesswsntls
+#patchtls=/vmesswstls
+#patchnontls=/vmesswsntls
 uuid=$(cat /proc/sys/kernel/random/uuid)
-read -p "   Bug Address (Example: www.google.com) : " address
-read -p "   Bug SNI/Host (Example : m.facebook.com) : " sni
+#read -p "   Bug Address (Example: www.google.com) : " address
+#read -p "   Bug SNI/Host (Example : m.facebook.com) : " sni
 read -p "   Expired (days) : " masaaktif
 bug_addr=${address}.
 bug_addr2=$address
@@ -142,19 +142,18 @@ sed -i '/#xray-vmess-tls$/a\#vms '"$user $exp $harini $uuid"'\
 sed -i '/#xray-vmess-nontls$/a\#vms '"$user $exp $harini $uuid"'\
 },{"id": "'""$uuid""'","alterId": '"0"',"email": "'""$user""'"' /usr/local/etc/xray/vmessnone.json
 cat>/usr/local/etc/xray/$user-tls.json<<EOF
-      {
+       {
       "v": "2",
       "ps": "${user}",
-      "add": "cdn-dev.hotlink.com.my",
-      "port": "${tls}",
-      "id": "${uuid}",
+      "add": "${domain}",
+      "port": "443",
+      "id": "$uuid",
       "aid": "0",
       "net": "ws",
-      "path": "$patchtls",
+      "path": "/vmess",
       "type": "none",
-      "host": "${domain}",
-      "tls": "tls",
-	  "sni": "cdn-dev.hotlink.com.my"
+      "host": "${sni}",
+      "tls": "tls"
 }
 EOF
 cat>/usr/local/etc/xray/$user-celcom.json<<EOF
@@ -176,14 +175,14 @@ cat>/usr/local/etc/xray/$user-none.json<<EOF
       {
       "v": "2",
       "ps": "${user}",
-      "add": "cdn.who.int",
-      "port": "${none}",
-      "id": "${uuid}",
+      "add": "${domain}",
+      "port": "80",
+      "id": "$uuid",
       "aid": "0",
       "net": "ws",
-      "path": "$patchnontls",
+      "path": "/vmess",
       "type": "none",
-      "host": "cdn.who.int.${domain}",
+      "host": "${sni}",
       "tls": "none"
 }
 EOF
@@ -229,19 +228,6 @@ echo -e "Network        : Websocket"
 echo -e "Path Tls       : $patchtls"
 echo -e "Path None Tls  : $patchnontls"
 echo -e "allowInsecure  : True/allow"
-echo -e "Support Yaml   : YES"
-echo -e "\e[$line═════════════════════════════════\e[m"
-echo -e "Pantang Larang $creditt Shop"
-echo -e "‼️Aktiviti Berikut Adalah Dilarang(ID akan di ban tanpa notis & tiada refund)"
-echo -e "\e[31m❌ Torrent (p2p, streaming p2p)"
-echo -e "\e[31m❌ PS4"
-echo -e "\e[31m❌ Porn"
-echo -e "\e[31m❌ Spam Bug"
-echo -e "\e[31m❌ Ddos Server"
-echo -e "\e[31m❌ Mining Bitcoins"
-echo -e "\e[31m❌ Abuse Usage"
-echo -e "\e[31m❌ Multi-Login ID"
-echo -e "\e[31m❌ Sharing Premium Config\e[m"
 echo -e "\e[$line═════════════════════════════════\e[m"
 echo -e "Link (Maxis)   : ${vmesslink1}"
 echo -e "\e[$line═════════════════════════════════\e[m"
