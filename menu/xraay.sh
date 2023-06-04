@@ -182,7 +182,7 @@ cat>/usr/local/etc/xray/$user-none.json<<EOF
       "id": "${uuid}",
       "aid": "0",
       "net": "ws",
-      "path": "vmess",
+      "path": "/vmess",
       "type": "none",
       "host": "$sni",
       "tls": "none"
@@ -210,8 +210,8 @@ echo -e "Port None TLS  : ${none}"
 echo -e "User ID        : ${uuid}"
 echo -e "Security       : Auto"
 echo -e "Network        : Websocket"
-echo -e "Path Tls       : $patchtls"
-echo -e "Path None Tls  : $patchnontls"
+echo -e "Path Tls       : /vmess"
+echo -e "Path None Tls  : /vmess"
 echo -e "allowInsecure  : True/allow"
 echo -e "Support Yaml   : YES"
 echo -e "\e[$line═════════════════════════════════\e[m"
