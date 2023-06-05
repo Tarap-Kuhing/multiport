@@ -174,7 +174,7 @@ cat> /usr/local/etc/xray/config.json << END
                         "xver": 1
                     },
                     {
-                        "path": "/vlesss", # // VLESS WS TLS
+                        "path": "/vless", # // VLESS WS TLS
                         "dest": 1212,
                         "xver": 1
                     },
