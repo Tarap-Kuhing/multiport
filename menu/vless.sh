@@ -157,7 +157,7 @@ echo -e "Created   : $harini"
 echo -e "Expired   : $exp"
 echo -e "Script By $creditt"
 echo ""
-read -n 1 -s -r -p "Press any key to back on menu xray"
+read -n 1 -s -r -p "Press any key to back on menu vless"
 vless
 }
 
@@ -242,7 +242,7 @@ echo -e "Created   : $harini"
 echo -e "Expired   : $exp"
 echo -e "Script By $creditt"
 echo ""
-read -n 1 -s -r -p "Press any key to back on menu xray"
+read -n 1 -s -r -p "Press any key to back on menu vless"
 vless
 }
 
@@ -288,7 +288,7 @@ echo " Client Name : $user"
 echo " Expired On  : $exp"
 echo " =========================="
 echo ""
-read -n 1 -s -r -p "Press any key to back on menu xray"
+read -n 1 -s -r -p "Press any key to back on menu vless"
 vless
 }
 
@@ -343,7 +343,7 @@ echo " Client Name : $user"
 echo " Expired On  : $exp4"
 echo " =========================="
 echo ""
-read -n 1 -s -r -p "Press any key to back on menu xray"
+read -n 1 -s -r -p "Press any key to back on menu vless"
 vless
 }
 
@@ -421,7 +421,7 @@ echo -e "Created   : $harini"
 echo -e "Expired   : $exp"
 echo -e "Script By $creditt"
 echo ""
-read -n 1 -s -r -p "Press any key to back on menu xray"
+read -n 1 -s -r -p "Press any key to back on menu vless"
 vless
 }
 
@@ -465,7 +465,7 @@ rm -rf /tmp/ipvmess.txt
 rm -rf /tmp/other.txt
 done
 echo ""
-read -n 1 -s -r -p "Press any key to back on menu xray"
+read -n 1 -s -r -p "Press any key to back on menu vless"
 vless
 echo -e "   \e[$line══════════════════════════════════════════\e[m"
 echo -e "   \e[$back_text    \e[30m[\e[$box PANEL XRAY VLESS WEBSOCKET TLS\e[30m ]\e[1m    \e[m"
