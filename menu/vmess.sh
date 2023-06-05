@@ -219,7 +219,7 @@ echo -e "Created   : $harini"
 echo -e "Expired   : $exp"
 echo -e "Script By $creditt"
 echo ""
-read -n 1 -s -r -p "Press any key to back on menu xray"
+read -n 1 -s -r -p "Press any key to back on menu vmess"
 vmess
 }
 
@@ -322,7 +322,7 @@ echo -e "Created   : $harini"
 echo -e "Expired   : $exp"
 echo -e "Script By $creditt"
 echo ""
-read -n 1 -s -r -p "Press any key to back on menu xray"
+read -n 1 -s -r -p "Press any key to back on menu vmess"
 vmess
 }
 
@@ -373,7 +373,7 @@ echo " Client Name : $user"
 echo " Expired On  : $exp"
 echo " =========================="
 echo ""
-read -n 1 -s -r -p "Press any key to back on menu xray"
+read -n 1 -s -r -p "Press any key to back on menu vmess"
 vmess
 }
 # FUCTION RENEW USER
@@ -427,7 +427,7 @@ echo " Client Name : $user"
 echo " Expired On  : $exp4"
 echo " =========================="
 echo ""
-read -n 1 -s -r -p "Press any key to back on menu xray"
+read -n 1 -s -r -p "Press any key to back on menu vmess"
 vmess
 }
 
@@ -540,7 +540,7 @@ echo -e "Created   : $harini"
 echo -e "Expired   : $exp"
 echo -e "Script By $creditt"
 echo ""
-read -n 1 -s -r -p "Press any key to back on menu xray"
+read -n 1 -s -r -p "Press any key to back on menu vmess"
 vmess
 }
 
@@ -584,7 +584,7 @@ rm -rf /tmp/ipvmess.txt
 rm -rf /tmp/other.txt
 done
 echo ""
-read -n 1 -s -r -p "Press any key to back on menu xray"
+read -n 1 -s -r -p "Press any key to back on menu vmess"
 vmess
 }
 clear
