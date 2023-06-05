@@ -235,6 +235,12 @@ case $menu in
 12)
     clear-log
     ;;
+13)
+    vmess
+    ;;
+14)
+    vless
+    ;;
 x)
     clear
     exit
