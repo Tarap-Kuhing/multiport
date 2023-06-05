@@ -281,6 +281,8 @@ wget -O dns "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/syste
 wget -O nf "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/system/nf.sh"
 wget -O addip "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/menu/addip.sh"
 wget -O tes "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/change-port/tes.sh"
+wget -O vmess "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/menu/vmess.sh"
+wget -O vless "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/menu/vless.sh"
 chmod +x tes
 chmod +x addip
 chmod +x add-host
@@ -350,6 +352,8 @@ chmod +x restore
 chmod +x ins-xray
 chmod +x running
 chmod +x m-backup
+chmod +x vmess
+chmod +x vless
 clear
 echo -e ""
 echo -e "\e[0;32mDownloaded successfully!\e[0m"
