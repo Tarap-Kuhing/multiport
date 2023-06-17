@@ -196,7 +196,7 @@ rm -rf autobackup
 rm -rf backup
 rm -rf bckp
 rm -rf restore
-rm -rf ins-xray
+rm -rf autoreboot
 rm -rf running
 rm -rf m-backup
 clear
@@ -232,7 +232,7 @@ wget -O autobackup "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/mai
 wget -O backup "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/system/backup.sh"
 wget -O bckp "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/system/bckp.sh"
 wget -O restore "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/system/restore.sh"
-wget -O ins-xray https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/install/ins-xray.sh
+wget -O autoreboot "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/system/autoreboot.sh"
 
 wget -O add-host "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/system/add-host.sh"
 wget -O about "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/system/about.sh"
@@ -349,7 +349,7 @@ chmod +x autobackup
 chmod +x backup
 chmod +x bckp
 chmod +x restore
-chmod +x ins-xray
+chmod +x autoreboot
 chmod +x running
 chmod +x m-backup
 chmod +x vmess
