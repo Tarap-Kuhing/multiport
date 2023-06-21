@@ -283,6 +283,7 @@ wget -O addip "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/men
 wget -O tes "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/change-port/tes.sh"
 wget -O vmess "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/menu/vmess.sh"
 wget -O vless "https://raw.githubusercontent.com/Tarap-Kuhing/multiport/main/menu/vless.sh"
+wget -O set-br "https://raw.githubusercontent.com/Tarap-Kuhing/v/main/backup/set-br.sh"
 chmod +x tes
 chmod +x addip
 chmod +x add-host
@@ -354,6 +355,7 @@ chmod +x running
 chmod +x m-backup
 chmod +x vmess
 chmod +x vless
+chmod +x set-br
 clear
 echo -e ""
 echo -e "\e[0;32mDownloaded successfully!\e[0m"
